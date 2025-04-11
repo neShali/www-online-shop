@@ -38,6 +38,25 @@ The application uses the following database tables:
 - PostgreSQL
 - Poetry
 
+### Docker Compose
+
+For development with Docker Compose:
+
+```bash
+# Start the application and database
+docker-compose up -d
+
+# Run migrations
+docker-compose exec app poetry run alembic upgrade head
+
+# Load test data
+docker-compose exec db psql -U postgres -d shop_db -f /data/test_data.sql
+
+# команда для bash 
+# Load test data
+docker-compose exec db bash -c "psql -U postgres -d shop_db -f /data/test_data.sql"
+```
+
 ### Installation
 
 1. Clone the repository:
@@ -214,21 +233,4 @@ docker build -t shop-api .
 docker run -p 8000:8000 --env-file .env shop-api
 ```
 
-### Docker Compose
 
-For development with Docker Compose:
-
-```bash
-# Start the application and database
-docker-compose up -d
-
-# Run migrations
-docker-compose exec app poetry run alembic upgrade head
-
-# Load test data
-docker-compose exec db psql -U postgres -d shop_db -f /data/test_data.sql
-
-# команда для bash 
-# Load test data
-docker-compose exec db bash -c "psql -U postgres -d shop_db -f /data/test_data.sql"
-```

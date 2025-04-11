@@ -4,9 +4,9 @@ version = "0.1.0"
 description = ""
 authors = [
     "Aleksei Ermakov <epmak@pm.me>",
-    "Anton Shmelev",
+    "Anton Shmelev <anton.shmelev@yahoo.com>",
     "Valeriya Zima",
-    "David Lisunenko"
+    "David Lisunenko <davidlisunenko@gmail.com>"
 ]
 readme = "README.md"
 packages = [{ include = "app" }]
