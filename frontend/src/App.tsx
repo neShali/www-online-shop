@@ -1,37 +1,35 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
-import { Button } from './shared/components/button/button';
+import { Route, Routes } from 'react-router';
+import Layout from './shared/components/layout/layout';
+import HomePage from './pages/homePage';
+import ProductsPage from './pages/productsPage';
+import ProductPage from './pages/productPage';
+import CartPage from './pages/cartPage';
+import CheckoutPage from './pages/checkoutPage';
+import LoginPage from './pages/loginPage';
+import ProfilePage from './pages/profilePage';
+import RegistrationPage from './pages/registrationPage';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<HomePage />} />
 
-      <Button>Add</Button>
-    </>
+        <Route path="products">
+          <Route index element={<ProductsPage />} />
+          <Route path=":productId" element={<ProductPage />} />
+        </Route>
+
+        <Route path="cart" element={<CartPage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegistrationPage />} />
+        <Route path="profile" element={<ProfilePage />} />
+
+        <Route path="*" element={<div>Страница не найдена</div>} />
+      </Route>
+    </Routes>
   );
 }
 
