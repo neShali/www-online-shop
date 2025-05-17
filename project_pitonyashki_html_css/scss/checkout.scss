@@ -1,0 +1,220 @@
+@import '../css/stylesheet.css';
+
+.checkout {
+  padding: 70px 112px 65px 50px;
+  &__container {
+    display: flex;
+    gap: 244px;
+  }
+  &__back {
+    > svg {
+      transform: scaleX(-1);
+      fill: none;
+      stroke: #0c0c0c;
+    }
+  }
+  &__title {
+    width: 196px;
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+  &__list {
+    width: 362px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    &__text {
+      padding: 0;
+      color: #8a8a8a;
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: uppercase;
+      line-height: 40px;
+      border: none;
+      background: none;
+    }
+  }
+  &__contact {
+    width: 109px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 40px;
+    margin-bottom: 4px;
+  }
+  &__form {
+    width: 468px;
+    height: 44px;
+    margin-bottom: 15px;
+    &__phone {
+      width: 468px;
+      height: 44px;
+      margin-bottom: 25px;
+    }
+    &__country {
+      width: 468px;
+      height: 44px;
+      position: relative;
+      margin-bottom: 15px;
+    }
+    &__btn {
+      position: absolute;
+      border: none;
+      background: none;
+      right: 10px;
+      top: 14px;
+      > svg {
+        fill: none;
+        stroke: #0c0c0c;
+      }
+    }
+  }
+  &__input {
+    border: 1px #d9d9d9 solid;
+    width: 468px;
+    height: 44px;
+    background: none;
+    color: #5e5e5e;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 40px;
+    padding-left: 20px;
+    &__name {
+      width: 231px;
+      height: 44px;
+      background: none;
+      border: 1px #d9d9d9 solid;
+      color: #5e5e5e;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 40px;
+      padding-left: 20px;
+    }
+  }
+  &__name {
+    width: 468px;
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+  }
+  &__address {
+    width: 143px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 40px;
+    margin-bottom: 4px;
+  }
+  &__country {
+    position: relative;
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding: 0 20px 0 27px;
+    margin-left: 237px;
+    width: 231px;
+    height: 44px;
+    border-radius: 2px;
+    background: rgba(217, 217, 217, 0.4);
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    > svg {
+      fill: none;
+      stroke: #0c0c0c;
+    }
+  }
+  &__right__cont {
+    width: 406px;
+    height: 538px;
+    margin-top: 212px;
+    border: 1px #d9d9d9 solid;
+    padding: 34px 37px 30px 40px;
+  }
+  &__order {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 29px;
+  }
+  &__products {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    margin-bottom: 34px;
+  }
+  &__product {
+    &__item {
+      height: 134px;
+    }
+    > a {
+      position: relative;
+      display: flex;
+      gap: 13px;
+    }
+    &__card {
+      > img {
+        width: 113px;
+        height: 134px;
+      }
+    }
+    &__text {
+      margin-top: 15px;
+    }
+    &__desc {
+      color: black;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: capitalize;
+      margin-bottom: 9px;
+    }
+    &__spec {
+      color: rgba(0, 0, 0, 0.66);
+      font-size: 11px;
+      font-weight: 500;
+      margin-bottom: 44px;
+    }
+    &__count {
+      font-size: 11px;
+      font-weight: 500;
+    }
+    &__price {
+      position: absolute;
+      font-size: 11px;
+      font-weight: 500;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  &__strip {
+    width: 327px;
+    outline: 1px #dfdfdf solid;
+    outline-offset: -0.5px;
+  }
+  &__subtotal {
+    margin: 44px 0 5px 0;
+    display: flex;
+    gap: 232px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  &__shipping {
+    display: flex;
+    gap: 158px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  &__total {
+    display: flex;
+    gap: 242px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 35px;
+  }
+}
