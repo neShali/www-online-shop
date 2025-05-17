@@ -1,0 +1,72 @@
+/* Thin */
+@font-face {
+    font-family: 'Beatrice Deck';
+    src: url('../assets/fonts/BeatriceDeck-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* Thin Italic */
+  @font-face {
+    font-family: 'Beatrice Deck';
+    src: url('../assets/fonts/BeatriceDeck-ThinItalic.woff2') format('woff2');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+  }
+  
+  /* Regular */
+  @font-face {
+    font-family: 'Beatrice Deck';
+    src: url('../assets/fonts/BeatriceDeck-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* Regular Italic */
+  @font-face {
+    font-family: 'Beatrice Deck';
+    src: url('../assets/fonts/BeatriceDeck-Italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  
+  /* Semibold */
+  @font-face {
+    font-family: 'Beatrice Deck';
+    src: url('../assets/fonts/BeatriceDeck-Semibold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* Semibold Italic */
+  @font-face {
+    font-family: 'Beatrice Deck';
+    src: url('../assets/fonts/BeatriceDeck-SemiboldItalic.woff2') format('woff2');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+  }
+  
+  /* Bold */
+  @font-face {
+    font-family: 'Beatrice Deck';
+    src: url('../assets/fonts/BeatriceDeck-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* Bold Italic */
+  @font-face {
+    font-family: 'Beatrice Deck';
+    src: url('../assets/fonts/BeatriceDeck-BoldItalic.woff2') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+  

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.cdnfonts.com/css/beatrice-display-trial"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>CLOTH</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <nav class="menu">
+          <ul class="menu__list">
+            <li class="menu__item">
+              <a href="./">Home</a>
+            </li>
+            <li class="menu__item">
+              <a href="./product.html">Collections</a>
+            </li>
+            <li class="menu__item">
+              <a href="./product.html">New</a>
+            </li>
+          </ul>
+        </nav>
+        <a href="./" class="logo">
+          <svg width="35" height="35">
+            <use href="./icons/main/symbol-defs.svg#icon-logo"></use>
+          </svg>
+        </a>
+
+        <ul class="header__btns">
+          <li class="header__btn">
+            <a href=".//cart.html">
+              <svg width="22" height="22">
+                <use href="./icons/main/symbol-defs.svg#icon-heart"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="header__btn">
+            <a href=".//cart.html"> Cart </a>
+          </li>
+          <li class="header__btn">
+            <a href=".//checkout.html">
+              <svg width="12" height="13">
+                <use href="./icons/main/symbol-defs.svg#icon-user"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <section class="shop">
+      <div class="container shop__container">
+        <div class="shop__slidbar">
+          <p class="shop--title">Filters</p>
+          <p class="shop--subtitle">Size</p>
+          <ul class="shop__size--list">
+            <li class="shop__size--item">
+              <button class="shop__size--btn">XS</button>
+            </li>
+            <li class="shop__size--item">
+              <button class="shop__size--btn">S</button>
+            </li>
+            <li class="shop__size--item">
+              <button class="shop__size--btn">M</button>
+            </li>
+            <li class="shop__size--item">
+              <button class="shop__size--btn">L</button>
+            </li>
+            <li class="shop__size--item">
+              <button class="shop__size--btn">XL</button>
+            </li>
+            <li class="shop__size--item">
+              <button class="shop__size--btn">2X</button>
+            </li>
+          </ul>
+          <div class="shop__size--strip"></div>
+          <ul class="shop__accordion">
+            <li class="shop__accordion--item">
+              <p class="shop__accordion--title">Availability</p>
+              <button class="shop__accordion--btn">
+                <svg width="14" height="10">
+                  <use
+                    href="./icons/main/symbol-defs.svg#icon-short_arrow_right_skim"
+                  ></use>
+                </svg>
+              </button>
+            </li>
+            <div class="shop__size--strip"></div>
+            <li class="shop__accordion--item">
+              <p class="shop__accordion--title">Category</p>
+              <button class="shop__accordion--btn">
+                <svg width="14" height="10">
+                  <use
+                    href="./icons/main/symbol-defs.svg#icon-short_arrow_right_skim"
+                  ></use>
+                </svg>
+              </button>
+            </li>
+            <div class="shop__size--strip"></div>
+            <li class="shop__accordion--item">
+              <p class="shop__accordion--title">Colors</p>
+              <button class="shop__accordion--btn">
+                <svg width="14" height="10">
+                  <use
+                    href="./icons/main/symbol-defs.svg#icon-short_arrow_right_skim"
+                  ></use>
+                </svg>
+              </button>
+            </li>
+            <div class="shop__size--strip"></div>
+            <li class="shop__accordion--item">
+              <p class="shop__accordion--title">Price Range</p>
+              <button class="shop__accordion--btn">
+                <svg width="14" height="10">
+                  <use
+                    href="./icons/main/symbol-defs.svg#icon-short_arrow_right_skim"
+                  ></use>
+                </svg>
+              </button>
+            </li>
+            <div class="shop__size--strip"></div>
+            <li class="shop__accordion--item">
+              <p class="shop__accordion--title">Collections</p>
+              <button class="shop__accordion--btn">
+                <svg width="14" height="10">
+                  <use
+                    href="./icons/main/symbol-defs.svg#icon-short_arrow_right_skim"
+                  ></use>
+                </svg>
+              </button>
+            </li>
+            <div class="shop__size--strip"></div>
+            <li class="shop__accordion--item">
+              <p class="shop__accordion--title">Tags</p>
+              <button class="shop__accordion--btn">
+                <svg width="14" height="10">
+                  <use
+                    href="./icons/main/symbol-defs.svg#icon-short_arrow_right_skim"
+                  ></use>
+                </svg>
+              </button>
+            </li>
+            <div class="shop__size--strip"></div>
+            <li class="shop__accordion--item">
+              <p class="shop__accordion--title">Raiting</p>
+              <button class="shop__accordion--btn">
+                <svg width="14" height="10">
+                  <use
+                    href="./icons/main/symbol-defs.svg#icon-short_arrow_right_skim"
+                  ></use>
+                </svg>
+              </button>
+            </li>
+            <div class="shop__size--strip"></div>
+          </ul>
+        </div>
+        <div class="shop__content">
+          <div class="shop__main">
+            <p class="shop__main__breadcrumbs">
+              <a class="shop__main__link" href="index.html">Home</a> /
+              <span class="shop__main__current">Products</span>
+            </p>
+            <p class="shop__main__title">Products</p>
+            <div class="shop__search--flex">
+              <div class="shop__search--section">
+                <form class="shop__search--form">
+                  <input
+                    type="text"
+                    class="shop__search--input"
+                    placeholder="Search"
+                  />
+                  <button class="shop__search--button">
+                    <svg width="12" height="13">
+                      <use href="./icons/main/symbol-defs.svg#icon-lupa"></use>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+              <div class="shop__categories">
+                <ul class="shop__category--list">
+                  <li class="shop__category--item">
+                    <button class="shop__category--btn">new</button>
+                  </li>
+                  <li class="shop__category--item">
+                    <button class="shop__category--btn">best sellers</button>
+                  </li>
+                  <li class="shop__category--item">
+                    <button class="shop__category--btn">shirts</button>
+                  </li>
+                  <li class="shop__category--item">
+                    <button class="shop__category--btn">t-shirts</button>
+                  </li>
+                  <li class="shop__right__grid__list__btn">
+                    <button class="shop__category--btn">polo shirts</button>
+                  </li>
+                  <li class="shop__category--item">
+                    <button class="shop__category--btn">jeans</button>
+                  </li>
+                  <li class="shop__category--item">
+                    <button class="shop__category--btn">shorts</button>
+                  </li>
+                  <li class="shop__category--item">
+                    <button class="shop__category--btn">lackets</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="shop__catalog">
+            <ul class="shop__catalog__list">
+              <a href="./product_card.html" class="shop__catalog__item">
+                <div class="shop__catalog__card">
+                  <img src="./img/new_this_week/flower_1.png" alt="" />
+                  <button class="shop__catalog__btn">
+                    <svg width="12" height="12">
+                      <use href="./icons/main/symbol-defs.svg#icon-plus"></use>
+                    </svg>
+                  </button>
+                </div>
+                <p class="shop__catalog__tag">V-Neck T-Shirt</p>
+                <div class="shop__catalog__desc">
+                  <p>Embroidered Seersucker Shirt</p>
+                  <span>$99</span>
+                </div>
+              </a>
+              <a href="./product_card.html" class="shop__catalog__card"
+                ><div class="shop__catalog__card">
+                  <img src="./img/new_this_week/flower_1.png" alt="" />
+                  <button class="shop__catalog__btn">
+                    <svg width="12" height="12">
+                      <use href="./icons/main/symbol-defs.svg#icon-plus"></use>
+                    </svg>
+                  </button>
+                </div>
+                <p class="shop__catalog__tag">V-Neck T-Shirt</p>
+                <div class="shop__catalog__desc">
+                  <p>Embroidered Seersucker Shirt</p>
+                  <span>$99</span>
+                </div></a
+              >
+              <a href="./product_card.html" class="shop__catalog__card"
+                ><div class="shop__catalog__card">
+                  <img src="./img/new_this_week/flower_1.png" alt="" />
+                  <button class="shop__catalog__btn">
+                    <svg width="12" height="12">
+                      <use href="./icons/main/symbol-defs.svg#icon-plus"></use>
+                    </svg>
+                  </button>
+                </div>
+                <p class="shop__catalog__tag">V-Neck T-Shirt</p>
+                <div class="shop__catalog__desc">
+                  <p>Embroidered Seersucker Shirt</p>
+                  <span>$99</span>
+                </div></a
+              >
+              <a href="./product_card.html" class="shop__catalog__card"
+                ><div class="shop__catalog__card">
+                  <img src="./img/new_this_week/flower_1.png" alt="" />
+                  <button class="shop__catalog__btn">
+                    <svg width="12" height="12">
+                      <use href="./icons/main/symbol-defs.svg#icon-plus"></use>
+                    </svg>
+                  </button>
+                </div>
+                <p class="shop__catalog__tag">V-Neck T-Shirt</p>
+                <div class="shop__catalog__desc">
+                  <p>Embroidered Seersucker Shirt</p>
+                  <span>$99</span>
+                </div></a
+              >
+              <a href="./product_card.html" class="shop__catalog__card"
+                ><div class="shop__catalog__card">
+                  <img src="./img/new_this_week/flower_1.png" alt="" />
+                  <button class="shop__catalog__btn">
+                    <svg width="12" height="12">
+                      <use href="./icons/main/symbol-defs.svg#icon-plus"></use>
+                    </svg>
+                  </button>
+                </div>
+                <p class="shop__catalog__tag">V-Neck T-Shirt</p>
+                <div class="shop__catalog__desc">
+                  <p>Embroidered Seersucker Shirt</p>
+                  <span>$99</span>
+                </div></a
+              >
+              <a href="./product_card.html" class="shop__catalog__card"
+                ><div class="shop__catalog__card">
+                  <img src="./img/new_this_week/flower_1.png" alt="" />
+                  <button class="shop__catalog__btn">
+                    <svg width="12" height="12">
+                      <use href="./icons/main/symbol-defs.svg#icon-plus"></use>
+                    </svg>
+                  </button>
+                </div>
+                <p class="shop__catalog__tag">V-Neck T-Shirt</p>
+                <div class="shop__catalog__desc">
+                  <p>Embroidered Seersucker Shirt</p>
+                  <span>$99</span>
+                </div></a
+              >
+              <a href="./product_card.html" class="shop__catalog__card"
+                ><div class="shop__catalog__card">
+                  <img src="./img/new_this_week/flower_1.png" alt="" />
+                  <button class="shop__catalog__btn">
+                    <svg width="12" height="12">
+                      <use href="./icons/main/symbol-defs.svg#icon-plus"></use>
+                    </svg>
+                  </button>
+                </div>
+                <p class="shop__catalog__tag">V-Neck T-Shirt</p>
+                <div class="shop__catalog__desc">
+                  <p>Embroidered Seersucker Shirt</p>
+                  <span>$99</span>
+                </div></a
+              >
+              <a href="./product_card.html" class="shop__catalog__card"
+                ><div class="shop__catalog__card">
+                  <img src="./img/new_this_week/flower_1.png" alt="" />
+                  <button class="shop__catalog__btn">
+                    <svg width="12" height="12">
+                      <use href="./icons/main/symbol-defs.svg#icon-plus"></use>
+                    </svg>
+                  </button>
+                </div>
+                <p class="shop__catalog__tag">V-Neck T-Shirt</p>
+                <div class="shop__catalog__desc">
+                  <p>Embroidered Seersucker Shirt</p>
+                  <span>$99</span>
+                </div></a
+              >
+              <a href="./product_card.html" class="shop__catalog__card"
+                ><div class="shop__catalog__card">
+                  <img src="./img/new_this_week/flower_1.png" alt="" />
+                  <button class="shop__catalog__btn">
+                    <svg width="12" height="12">
+                      <use href="./icons/main/symbol-defs.svg#icon-plus"></use>
+                    </svg>
+                  </button>
+                </div>
+                <p class="shop__catalog__tag">V-Neck T-Shirt</p>
+                <div class="shop__catalog__desc">
+                  <p>Embroidered Seersucker Shirt</p>
+                  <span>$99</span>
+                </div></a
+              >
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container footer__container">
+        <div class="footer__left">
+          <p class="footer__left__info">Info</p>
+          <ul class="footer__left__list__info">
+            <li>
+              <a class="footer__left__info__link" href="">Pricing</a>
+            </li>
+            <li>
+              <a class="footer__left__info__link" href="">About</a>
+            </li>
+            <li>
+              <a class="footer__left__info__link" href="">Contacts</a>
+            </li>
+          </ul>
+          <p class="footer__left__languages">Languages</p>
+          <ul class="footer__left__list__language">
+            <li class="footer__left__btn">
+              <button class="footer__left__btn__text">Eng</button>
+            </li>
+            <li class="footer__left__btn">
+              <button class="footer__left__btn__text">Esp</button>
+            </li>
+            <li class="footer__left__btn">
+              <button class="footer__left__btn__text">Sve</button>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__right">
+          <p class="footer__right__technologies">Technologies</p>
+          <div class="footer__right__wrapper">
+            <a href="./" class="footer__right__logo_icon">
+              <svg width="47" height="47">
+                <use href="./icons/main/symbol-defs.svg#icon-logo"></use>
+              </svg>
+            </a>
+            <p class="footer__right__logo">VR</p>
+            <p class="footer__right__logo">XIV</p>
+            <p class="footer__right__logo">QR</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
