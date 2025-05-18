@@ -1,8 +1,6 @@
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 import { Route, Routes } from 'react-router';
-import Layout from './shared/components/layout/layout';
+import Layout from './shared/components/layout/Layout';
 import HomePage from './pages/homePage';
 import ProductsPage from './pages/productsPage';
 import ProductPage from './pages/productPage';

@@ -1,0 +1,1 @@
+{"properties":{"product_id":{"type":"integer","title":"Product Id"},"variant_id":{"type":"integer","title":"Variant Id"},"quantity":{"type":"integer","title":"Quantity","default":1}},"type":"object","required":["product_id","variant_id"],"title":"CartItemCreate","x-readme-ref-name":"CartItemCreate"}

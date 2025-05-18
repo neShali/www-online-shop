@@ -1,0 +1,1 @@
+{"properties":{"name":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Name"},"description":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Description"},"parent_id":{"anyOf":[{"type":"integer"},{"type":"null"}],"title":"Parent Id"}},"type":"object","title":"CategoryUpdate","x-readme-ref-name":"CategoryUpdate"}

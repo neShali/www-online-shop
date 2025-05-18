@@ -1,0 +1,122 @@
+import client from '@kubb/plugin-client/clients/axios';
+import type {
+  RequestConfig,
+  ResponseErrorConfig,
+} from '@kubb/plugin-client/clients/axios';
+import type {
+  QueryKey,
+  QueryClient,
+  UseSuspenseQueryOptions,
+  UseSuspenseQueryResult,
+} from '@tanstack/react-query';
+import type {
+  GetPromoQueryResponse,
+  GetPromoPathParams,
+  GetPromo422,
+} from '../../types/promosTypes/GetPromo';
+import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
+
+export const getPromoSuspenseQueryKey = ({
+  promo_id,
+}: {
+  promo_id: GetPromoPathParams['promo_id'];
+}) =>
+  [
+    'v5',
+    { url: '/api/v1/promos/:promo_id', params: { promo_id: promo_id } },
+  ] as const;
+
+export type GetPromoSuspenseQueryKey = ReturnType<
+  typeof getPromoSuspenseQueryKey
+>;
+
+/**
+ * @description Get a promo by ID (admin only).
+ * @summary Get Promo
+ * {@link /api/v1/promos/:promo_id}
+ */
+export async function getPromoSuspense(
+  { promo_id }: { promo_id: GetPromoPathParams['promo_id'] },
+  config: Partial<RequestConfig> & { client?: typeof client } = {}
+) {
+  const { client: request = client, ...requestConfig } = config;
+
+  const res = await request<
+    GetPromoQueryResponse,
+    ResponseErrorConfig<GetPromo422>,
+    unknown
+  >({
+    method: 'GET',
+    url: `/api/v1/promos/${promo_id}`,
+    ...requestConfig,
+  });
+  return res.data;
+}
+
+export function getPromoSuspenseQueryOptions(
+  { promo_id }: { promo_id: GetPromoPathParams['promo_id'] },
+  config: Partial<RequestConfig> & { client?: typeof client } = {}
+) {
+  const queryKey = getPromoSuspenseQueryKey({ promo_id });
+  return queryOptions<
+    GetPromoQueryResponse,
+    ResponseErrorConfig<GetPromo422>,
+    GetPromoQueryResponse,
+    typeof queryKey
+  >({
+    enabled: !!promo_id,
+    queryKey,
+    queryFn: async ({ signal }) => {
+      config.signal = signal;
+      return getPromoSuspense({ promo_id }, config);
+    },
+  });
+}
+
+/**
+ * @description Get a promo by ID (admin only).
+ * @summary Get Promo
+ * {@link /api/v1/promos/:promo_id}
+ */
+export function useGetPromoSuspense<
+  TData = GetPromoQueryResponse,
+  TQueryKey extends QueryKey = GetPromoSuspenseQueryKey,
+>(
+  { promo_id }: { promo_id: GetPromoPathParams['promo_id'] },
+  options: {
+    query?: Partial<
+      UseSuspenseQueryOptions<
+        GetPromoQueryResponse,
+        ResponseErrorConfig<GetPromo422>,
+        TData,
+        TQueryKey
+      >
+    > & { client?: QueryClient };
+    client?: Partial<RequestConfig> & { client?: typeof client };
+  } = {}
+) {
+  const {
+    query: { client: queryClient, ...queryOptions } = {},
+    client: config = {},
+  } = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ?? getPromoSuspenseQueryKey({ promo_id });
+
+  const query = useSuspenseQuery(
+    {
+      ...(getPromoSuspenseQueryOptions(
+        { promo_id },
+        config
+      ) as unknown as UseSuspenseQueryOptions),
+      queryKey,
+      ...(queryOptions as unknown as Omit<UseSuspenseQueryOptions, 'queryKey'>),
+    },
+    queryClient
+  ) as UseSuspenseQueryResult<TData, ResponseErrorConfig<GetPromo422>> & {
+    queryKey: TQueryKey;
+  };
+
+  query.queryKey = queryKey as TQueryKey;
+
+  return query;
+}

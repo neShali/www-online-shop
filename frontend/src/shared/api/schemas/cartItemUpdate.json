@@ -1,0 +1,1 @@
+{"properties":{"quantity":{"anyOf":[{"type":"integer"},{"type":"null"}],"title":"Quantity"}},"type":"object","title":"CartItemUpdate","x-readme-ref-name":"CartItemUpdate"}

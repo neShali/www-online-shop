@@ -1,0 +1,1 @@
+{"properties":{"product_id":{"type":"integer","title":"Product Id"},"rating":{"type":"number","title":"Rating"},"comment":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Comment"}},"type":"object","required":["product_id","rating"],"title":"ReviewCreate","x-readme-ref-name":"ReviewCreate"}

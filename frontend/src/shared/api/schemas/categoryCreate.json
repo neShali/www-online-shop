@@ -1,0 +1,1 @@
+{"properties":{"name":{"type":"string","title":"Name"},"description":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Description"},"parent_id":{"anyOf":[{"type":"integer"},{"type":"null"}],"title":"Parent Id"}},"type":"object","required":["name"],"title":"CategoryCreate","x-readme-ref-name":"CategoryCreate"}

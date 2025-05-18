@@ -1,0 +1,1 @@
+{"properties":{"product_id":{"type":"integer","title":"Product Id"},"promo_id":{"type":"integer","title":"Promo Id"}},"type":"object","required":["product_id","promo_id"],"title":"ProductPromoCreate","x-readme-ref-name":"ProductPromoCreate"}

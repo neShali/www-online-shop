@@ -1,0 +1,1 @@
+{"properties":{"product_id":{"anyOf":[{"type":"integer"},{"type":"null"}],"title":"Product Id"},"rating":{"anyOf":[{"type":"number"},{"type":"null"}],"title":"Rating"},"comment":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Comment"}},"type":"object","title":"ReviewUpdate","x-readme-ref-name":"ReviewUpdate"}

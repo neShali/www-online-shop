@@ -1,0 +1,134 @@
+import client from '@kubb/plugin-client/clients/axios';
+import type {
+  RequestConfig,
+  ResponseErrorConfig,
+} from '@kubb/plugin-client/clients/axios';
+import type {
+  QueryKey,
+  QueryClient,
+  QueryObserverOptions,
+  UseQueryResult,
+} from '@tanstack/react-query';
+import type {
+  GetProductAverageRatingQueryResponse,
+  GetProductAverageRatingPathParams,
+  GetProductAverageRating422,
+} from '../../types/reviewsTypes/GetProductAverageRating';
+import { queryOptions, useQuery } from '@tanstack/react-query';
+
+export const getProductAverageRatingQueryKey = ({
+  product_id,
+}: {
+  product_id: GetProductAverageRatingPathParams['product_id'];
+}) =>
+  [
+    'v5',
+    {
+      url: '/api/v1/reviews/avg/:product_id',
+      params: { product_id: product_id },
+    },
+  ] as const;
+
+export type GetProductAverageRatingQueryKey = ReturnType<
+  typeof getProductAverageRatingQueryKey
+>;
+
+/**
+ * @description Get average rating for a product.
+ * @summary Get Product Average Rating
+ * {@link /api/v1/reviews/avg/:product_id}
+ */
+export async function getProductAverageRating(
+  {
+    product_id,
+  }: { product_id: GetProductAverageRatingPathParams['product_id'] },
+  config: Partial<RequestConfig> & { client?: typeof client } = {}
+) {
+  const { client: request = client, ...requestConfig } = config;
+
+  const res = await request<
+    GetProductAverageRatingQueryResponse,
+    ResponseErrorConfig<GetProductAverageRating422>,
+    unknown
+  >({
+    method: 'GET',
+    url: `/api/v1/reviews/avg/${product_id}`,
+    ...requestConfig,
+  });
+  return res.data;
+}
+
+export function getProductAverageRatingQueryOptions(
+  {
+    product_id,
+  }: { product_id: GetProductAverageRatingPathParams['product_id'] },
+  config: Partial<RequestConfig> & { client?: typeof client } = {}
+) {
+  const queryKey = getProductAverageRatingQueryKey({ product_id });
+  return queryOptions<
+    GetProductAverageRatingQueryResponse,
+    ResponseErrorConfig<GetProductAverageRating422>,
+    GetProductAverageRatingQueryResponse,
+    typeof queryKey
+  >({
+    enabled: !!product_id,
+    queryKey,
+    queryFn: async ({ signal }) => {
+      config.signal = signal;
+      return getProductAverageRating({ product_id }, config);
+    },
+  });
+}
+
+/**
+ * @description Get average rating for a product.
+ * @summary Get Product Average Rating
+ * {@link /api/v1/reviews/avg/:product_id}
+ */
+export function useGetProductAverageRating<
+  TData = GetProductAverageRatingQueryResponse,
+  TQueryData = GetProductAverageRatingQueryResponse,
+  TQueryKey extends QueryKey = GetProductAverageRatingQueryKey,
+>(
+  {
+    product_id,
+  }: { product_id: GetProductAverageRatingPathParams['product_id'] },
+  options: {
+    query?: Partial<
+      QueryObserverOptions<
+        GetProductAverageRatingQueryResponse,
+        ResponseErrorConfig<GetProductAverageRating422>,
+        TData,
+        TQueryData,
+        TQueryKey
+      >
+    > & { client?: QueryClient };
+    client?: Partial<RequestConfig> & { client?: typeof client };
+  } = {}
+) {
+  const {
+    query: { client: queryClient, ...queryOptions } = {},
+    client: config = {},
+  } = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ?? getProductAverageRatingQueryKey({ product_id });
+
+  const query = useQuery(
+    {
+      ...(getProductAverageRatingQueryOptions(
+        { product_id },
+        config
+      ) as unknown as QueryObserverOptions),
+      queryKey,
+      ...(queryOptions as unknown as Omit<QueryObserverOptions, 'queryKey'>),
+    },
+    queryClient
+  ) as UseQueryResult<
+    TData,
+    ResponseErrorConfig<GetProductAverageRating422>
+  > & { queryKey: TQueryKey };
+
+  query.queryKey = queryKey as TQueryKey;
+
+  return query;
+}

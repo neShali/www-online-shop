@@ -1,0 +1,99 @@
+import client from '@kubb/plugin-client/clients/axios';
+import type {
+  RequestConfig,
+  ResponseErrorConfig,
+} from '@kubb/plugin-client/clients/axios';
+import type {
+  QueryKey,
+  QueryClient,
+  QueryObserverOptions,
+  UseQueryResult,
+} from '@tanstack/react-query';
+import type { ReadUsersMeQueryResponse } from '../../types/authenticationTypes/ReadUsersMe';
+import { queryOptions, useQuery } from '@tanstack/react-query';
+
+export const readUsersMeQueryKey = () =>
+  ['v5', { url: '/api/v1/auth/me' }] as const;
+
+export type ReadUsersMeQueryKey = ReturnType<typeof readUsersMeQueryKey>;
+
+/**
+ * @description Get current user.
+ * @summary Read Users Me
+ * {@link /api/v1/auth/me}
+ */
+export async function readUsersMe(
+  config: Partial<RequestConfig> & { client?: typeof client } = {}
+) {
+  const { client: request = client, ...requestConfig } = config;
+
+  const res = await request<
+    ReadUsersMeQueryResponse,
+    ResponseErrorConfig<Error>,
+    unknown
+  >({ method: 'GET', url: `/api/v1/auth/me`, ...requestConfig });
+  return res.data;
+}
+
+export function readUsersMeQueryOptions(
+  config: Partial<RequestConfig> & { client?: typeof client } = {}
+) {
+  const queryKey = readUsersMeQueryKey();
+  return queryOptions<
+    ReadUsersMeQueryResponse,
+    ResponseErrorConfig<Error>,
+    ReadUsersMeQueryResponse,
+    typeof queryKey
+  >({
+    queryKey,
+    queryFn: async ({ signal }) => {
+      config.signal = signal;
+      return readUsersMe(config);
+    },
+  });
+}
+
+/**
+ * @description Get current user.
+ * @summary Read Users Me
+ * {@link /api/v1/auth/me}
+ */
+export function useReadUsersMe<
+  TData = ReadUsersMeQueryResponse,
+  TQueryData = ReadUsersMeQueryResponse,
+  TQueryKey extends QueryKey = ReadUsersMeQueryKey,
+>(
+  options: {
+    query?: Partial<
+      QueryObserverOptions<
+        ReadUsersMeQueryResponse,
+        ResponseErrorConfig<Error>,
+        TData,
+        TQueryData,
+        TQueryKey
+      >
+    > & { client?: QueryClient };
+    client?: Partial<RequestConfig> & { client?: typeof client };
+  } = {}
+) {
+  const {
+    query: { client: queryClient, ...queryOptions } = {},
+    client: config = {},
+  } = options ?? {};
+  const queryKey = queryOptions?.queryKey ?? readUsersMeQueryKey();
+
+  const query = useQuery(
+    {
+      ...(readUsersMeQueryOptions(config) as unknown as QueryObserverOptions),
+      queryKey,
+      ...(queryOptions as unknown as Omit<QueryObserverOptions, 'queryKey'>),
+    },
+    queryClient
+  ) as UseQueryResult<TData, ResponseErrorConfig<Error>> & {
+    queryKey: TQueryKey;
+  };
+
+  query.queryKey = queryKey as TQueryKey;
+
+  return query;
+}
