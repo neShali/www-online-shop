@@ -1,8 +1,6 @@
-
 #root {
-  max-width: 1180px;
+  min-width: 320px;
   margin: 0 auto;
   text-align: center;
   font-family: BeatriceDeck;
 }
-
