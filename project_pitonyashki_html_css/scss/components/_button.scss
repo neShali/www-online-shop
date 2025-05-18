@@ -1,0 +1,64 @@
+@import "../css/stylesheet.css";
+.container {
+  padding-top: 15px;
+}
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 2rem;
+  &__btn {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding: 0 20px 0 27px;
+    margin-right: 40px;
+    width: 265px;
+    height: 40px;
+    border-radius: 2px;
+    background: rgba(217, 217, 217, 0.4);
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    > svg {
+      stroke: #0c0c0c;
+      fill: none;
+      transition: stroke 0.2s ease;
+    }
+    &__focus {
+      background-color: rgb(217, 217, 217);
+    }
+    &__active {
+      background-color: rgb(217, 217, 217);
+      border: 2px solid #000;
+    }
+  }
+  &__btn_2 {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 19px;
+    padding: 0 14px 0 22px;
+    margin-right: 40px;
+    width: 170px;
+    height: 40px;
+    border-radius: 2px;
+    background: rgba(217, 217, 217, 0.4);
+    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+    > svg {
+      stroke: #0c0c0c;
+      fill: none;
+      transition: stroke 0.2s ease;
+    }
+    &__focus {
+      background-color: rgb(217, 217, 217);
+    }
+    &__active {
+      background-color: rgb(217, 217, 217);
+      border: 2px solid #000;
+    }
+  }
+}

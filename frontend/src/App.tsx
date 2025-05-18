@@ -1,3 +1,5 @@
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
 import './App.css';
 import { Route, Routes } from 'react-router';
 import Layout from './shared/components/layout/layout';
@@ -9,6 +11,7 @@ import CheckoutPage from './pages/checkoutPage';
 import LoginPage from './pages/loginPage';
 import ProfilePage from './pages/profilePage';
 import RegistrationPage from './pages/registrationPage';
+import './styles/fonts.css';
 
 function App() {
   return (

@@ -1,0 +1,234 @@
+@import '../css/stylesheet.css';
+
+.container {
+  &__cart {
+    display: flex;
+    flex-direction: row;
+    gap: 150px;
+  }
+}
+.cart {
+  padding: 90px 0 225px 0;
+  //   &__left-cont {
+  //   }
+  &__choice {
+    position: relative;
+    height: 40px;
+    width: 304px;
+    margin-bottom: 10px;
+  }
+  &__bag {
+    position: absolute;
+    left: 0;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 40px;
+    border: none;
+    background: none;
+  }
+  &__like {
+    &__btn {
+      fill: #8a8a8a;
+    }
+    &__text {
+      position: relative;
+      color: #8a8a8a;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 40px;
+      left: 160px;
+      border: none;
+      background: none;
+    }
+    position: absolute;
+    top: 9px;
+    left: 135px;
+    border: none;
+    background: none;
+  }
+  &__strip {
+    width: 712px;
+    height: 0px;
+    outline: 1px #dfdfdf solid;
+    margin-bottom: 30px;
+  }
+  &__strip--buttom {
+    width: 712px;
+    height: 0px;
+    outline: 1px #dfdfdf solid;
+  }
+  &__product {
+    &__list {
+      display: flex;
+      gap: 80px;
+      margin-bottom: 38px;
+      &__card {
+        margin-bottom: 10px;
+      }
+    }
+    &__img {
+      width: 265px;
+    }
+    &__tag {
+      color: rgba(0, 0, 0, 0.66);
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    &__desc {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    &__card {
+      position: relative;
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    &__like {
+      position: absolute;
+      bottom: 0;
+      right: 40px;
+      background: rgba(255, 255, 255, 0.6);
+      border: none;
+      height: 34px;
+      width: 34px;
+      > svg {
+        fill: #a1a1a1;
+      }
+    }
+    // &__dop {
+    // }
+    &__del {
+      border: none;
+      background: none;
+      padding: 0;
+      width: 16px;
+      margin-bottom: 72px;
+      > svg {
+        fill: none;
+        stroke: #5e5e5e;
+        transform: rotate(45deg);
+      }
+    }
+    &__size {
+      margin-bottom: 15px;
+    }
+    &__color {
+      border: none;
+      height: 25px;
+      width: 25px;
+      margin-bottom: 15px;
+    }
+    &__sum {
+      display: flex;
+      flex-direction: column;
+      &__plus {
+        > button {
+          width: 25px;
+          height: 23px;
+          border: 1px #8a8a8a solid;
+          > svg {
+            fill: none;
+            stroke: #000000;
+          }
+        }
+      }
+      &__num {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        > button {
+          width: 25px;
+          height: 23px;
+          border: 1px #8a8a8a solid;
+        }
+      }
+      &__min {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 25px;
+        height: 23px;
+        > button {
+          width: 25px;
+          height: 23px;
+          border: 1px #8a8a8a solid;
+          > svg {
+            fill: none;
+            stroke: #0c0c0c;
+          }
+        }
+      }
+    }
+  }
+  &__right-cont {
+    padding: 50px 35px 37px 40px;
+    margin-top: 70px;
+    border: 1px #d9d9d9 solid;
+    width: 306px;
+    height: 347px;
+  }
+  &__summary {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 27px;
+  }
+  &__subtotal {
+    display: flex;
+    gap: 142px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 13px;
+  }
+  &__shipping {
+    display: flex;
+    gap: 140px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  &__strip--right {
+    width: 229px;
+    height: 0px;
+    outline: 1px #dfdfdf solid;
+    margin-bottom: 28px;
+  }
+  &__total {
+    display: flex;
+    gap: 60px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+  }
+  &__agree {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    margin-bottom: 25px;
+    &__btn {
+      width: 17px;
+      height: 18px;
+      border: 1px #8a8a8a solid;
+    }
+    &__text {
+      font-size: 11px;
+      font-weight: 250;
+    }
+  }
+  &__btn {
+    width: 229px;
+    height: 40px;
+    background: #d9d9d9;
+    border: none;
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
