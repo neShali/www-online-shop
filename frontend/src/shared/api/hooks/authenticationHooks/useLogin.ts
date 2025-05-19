@@ -35,6 +35,7 @@ export async function login(
   >({
     method: 'POST',
     url: `/api/v1/auth/login`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
     headers: {

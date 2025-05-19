@@ -18,8 +18,7 @@ import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 
 export const listCategoriesSuspenseQueryKey = (
   params?: ListCategoriesQueryParams
-) =>
-  ['v5', { url: '/api/v1/categories/' }, ...(params ? [params] : [])] as const;
+) => [{ url: '/api/v1/categories/' }, ...(params ? [params] : [])] as const;
 
 export type ListCategoriesSuspenseQueryKey = ReturnType<
   typeof listCategoriesSuspenseQueryKey
@@ -43,6 +42,7 @@ export async function listCategoriesSuspense(
   >({
     method: 'GET',
     url: `/api/v1/categories/`,
+    baseURL: 'http://localhost:8000',
     params,
     ...requestConfig,
   });

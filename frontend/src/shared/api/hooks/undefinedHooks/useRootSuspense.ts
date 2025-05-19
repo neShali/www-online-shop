@@ -9,70 +9,67 @@ import type {
   UseSuspenseQueryOptions,
   UseSuspenseQueryResult,
 } from '@tanstack/react-query';
-import type { GetMyCartQueryResponse } from '../../types/cartsTypes/GetMyCart';
+import type { RootQueryResponse } from '../../types/undefinedTypes/Root';
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 
-export const getMyCartSuspenseQueryKey = () =>
-  [{ url: '/api/v1/carts/me' }] as const;
+export const rootSuspenseQueryKey = () => [{ url: '/' }] as const;
 
-export type GetMyCartSuspenseQueryKey = ReturnType<
-  typeof getMyCartSuspenseQueryKey
->;
+export type RootSuspenseQueryKey = ReturnType<typeof rootSuspenseQueryKey>;
 
 /**
- * @description Get current user's active cart.
- * @summary Get My Cart
- * {@link /api/v1/carts/me}
+ * @description Root endpoint.
+ * @summary Root
+ * {@link /}
  */
-export async function getMyCartSuspense(
+export async function rootSuspense(
   config: Partial<RequestConfig> & { client?: typeof client } = {}
 ) {
   const { client: request = client, ...requestConfig } = config;
 
   const res = await request<
-    GetMyCartQueryResponse,
+    RootQueryResponse,
     ResponseErrorConfig<Error>,
     unknown
   >({
     method: 'GET',
-    url: `/api/v1/carts/me`,
+    url: `/`,
     baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;
 }
 
-export function getMyCartSuspenseQueryOptions(
+export function rootSuspenseQueryOptions(
   config: Partial<RequestConfig> & { client?: typeof client } = {}
 ) {
-  const queryKey = getMyCartSuspenseQueryKey();
+  const queryKey = rootSuspenseQueryKey();
   return queryOptions<
-    GetMyCartQueryResponse,
+    RootQueryResponse,
     ResponseErrorConfig<Error>,
-    GetMyCartQueryResponse,
+    RootQueryResponse,
     typeof queryKey
   >({
     queryKey,
     queryFn: async ({ signal }) => {
       config.signal = signal;
-      return getMyCartSuspense(config);
+      return rootSuspense(config);
     },
   });
 }
 
 /**
- * @description Get current user's active cart.
- * @summary Get My Cart
- * {@link /api/v1/carts/me}
+ * @description Root endpoint.
+ * @summary Root
+ * {@link /}
  */
-export function useGetMyCartSuspense<
-  TData = GetMyCartQueryResponse,
-  TQueryKey extends QueryKey = GetMyCartSuspenseQueryKey,
+export function useRootSuspense<
+  TData = RootQueryResponse,
+  TQueryKey extends QueryKey = RootSuspenseQueryKey,
 >(
   options: {
     query?: Partial<
       UseSuspenseQueryOptions<
-        GetMyCartQueryResponse,
+        RootQueryResponse,
         ResponseErrorConfig<Error>,
         TData,
         TQueryKey
@@ -85,11 +82,11 @@ export function useGetMyCartSuspense<
     query: { client: queryClient, ...queryOptions } = {},
     client: config = {},
   } = options ?? {};
-  const queryKey = queryOptions?.queryKey ?? getMyCartSuspenseQueryKey();
+  const queryKey = queryOptions?.queryKey ?? rootSuspenseQueryKey();
 
   const query = useSuspenseQuery(
     {
-      ...(getMyCartSuspenseQueryOptions(
+      ...(rootSuspenseQueryOptions(
         config
       ) as unknown as UseSuspenseQueryOptions),
       queryKey,

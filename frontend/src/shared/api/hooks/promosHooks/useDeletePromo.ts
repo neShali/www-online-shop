@@ -34,6 +34,7 @@ export async function deletePromo(
   >({
     method: 'DELETE',
     url: `/api/v1/promos/${promo_id}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

@@ -40,6 +40,7 @@ export async function updateReview(
   >({
     method: 'PUT',
     url: `/api/v1/reviews/${review_id}`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

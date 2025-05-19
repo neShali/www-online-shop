@@ -40,6 +40,7 @@ export async function updateProduct(
   >({
     method: 'PUT',
     url: `/api/v1/products/${product_id}`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

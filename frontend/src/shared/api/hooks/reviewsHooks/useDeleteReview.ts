@@ -36,6 +36,7 @@ export async function deleteReview(
   >({
     method: 'DELETE',
     url: `/api/v1/reviews/${review_id}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

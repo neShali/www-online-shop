@@ -38,6 +38,7 @@ export async function registerUser(
   >({
     method: 'POST',
     url: `/api/v1/auth/register`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

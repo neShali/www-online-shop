@@ -38,6 +38,7 @@ export async function addItemToCart(
   >({
     method: 'POST',
     url: `/api/v1/carts/items`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

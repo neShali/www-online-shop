@@ -40,6 +40,7 @@ export async function updateCartItem(
   >({
     method: 'PUT',
     url: `/api/v1/carts/items/${item_id}`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

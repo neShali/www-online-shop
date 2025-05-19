@@ -17,7 +17,7 @@ import type {
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 
 export const listPromosSuspenseQueryKey = (params?: ListPromosQueryParams) =>
-  ['v5', { url: '/api/v1/promos/' }, ...(params ? [params] : [])] as const;
+  [{ url: '/api/v1/promos/' }, ...(params ? [params] : [])] as const;
 
 export type ListPromosSuspenseQueryKey = ReturnType<
   typeof listPromosSuspenseQueryKey
@@ -41,6 +41,7 @@ export async function listPromosSuspense(
   >({
     method: 'GET',
     url: `/api/v1/promos/`,
+    baseURL: 'http://localhost:8000',
     params,
     ...requestConfig,
   });

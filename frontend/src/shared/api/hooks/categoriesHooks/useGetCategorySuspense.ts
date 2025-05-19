@@ -22,7 +22,6 @@ export const getCategorySuspenseQueryKey = ({
   category_id: GetCategoryPathParams['category_id'];
 }) =>
   [
-    'v5',
     {
       url: '/api/v1/categories/:category_id',
       params: { category_id: category_id },
@@ -51,6 +50,7 @@ export async function getCategorySuspense(
   >({
     method: 'GET',
     url: `/api/v1/categories/${category_id}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

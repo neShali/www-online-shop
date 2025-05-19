@@ -38,6 +38,7 @@ export async function createProduct(
   >({
     method: 'POST',
     url: `/api/v1/products/`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

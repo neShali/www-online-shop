@@ -38,6 +38,7 @@ export async function updateUserMe(
   >({
     method: 'PUT',
     url: `/api/v1/auth/me`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

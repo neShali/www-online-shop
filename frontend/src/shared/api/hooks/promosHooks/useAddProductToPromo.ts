@@ -38,6 +38,7 @@ export async function addProductToPromo(
   >({
     method: 'POST',
     url: `/api/v1/promos/product`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

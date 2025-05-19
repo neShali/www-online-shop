@@ -22,7 +22,6 @@ export const getCategoryQueryKey = ({
   category_id: GetCategoryPathParams['category_id'];
 }) =>
   [
-    'v5',
     {
       url: '/api/v1/categories/:category_id',
       params: { category_id: category_id },
@@ -49,6 +48,7 @@ export async function getCategory(
   >({
     method: 'GET',
     url: `/api/v1/categories/${category_id}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

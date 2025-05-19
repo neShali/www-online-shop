@@ -31,6 +31,7 @@ export async function refreshToken(
   >({
     method: 'POST',
     url: `/api/v1/auth/refresh-token`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

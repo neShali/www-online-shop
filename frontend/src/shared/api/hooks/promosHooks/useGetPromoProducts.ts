@@ -22,7 +22,6 @@ export const getPromoProductsQueryKey = ({
   promo_id: GetPromoProductsPathParams['promo_id'];
 }) =>
   [
-    'v5',
     {
       url: '/api/v1/promos/:promo_id/products',
       params: { promo_id: promo_id },
@@ -51,6 +50,7 @@ export async function getPromoProducts(
   >({
     method: 'GET',
     url: `/api/v1/promos/${promo_id}/products`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

@@ -36,6 +36,7 @@ export async function deleteCategory(
   >({
     method: 'DELETE',
     url: `/api/v1/categories/${category_id}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

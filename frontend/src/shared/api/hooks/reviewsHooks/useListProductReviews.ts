@@ -22,7 +22,6 @@ export const listProductReviewsQueryKey = (
   params?: ListProductReviewsQueryParams
 ) =>
   [
-    'v5',
     {
       url: '/api/v1/reviews/product/:product_id',
       params: { product_id: product_id },
@@ -53,6 +52,7 @@ export async function listProductReviews(
   >({
     method: 'GET',
     url: `/api/v1/reviews/product/${product_id}`,
+    baseURL: 'http://localhost:8000',
     params,
     ...requestConfig,
   });

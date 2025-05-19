@@ -22,6 +22,7 @@ img {
 
 button {
   cursor: pointer;
+  font-family: inherit;
 }
 
 svg {
@@ -29,8 +30,8 @@ svg {
 }
 
 body {
-  font-family: 'Beatrice Deck Trial';
-  background: url(../img/bg.jpg);
+  font-family: 'Beatrice Deck';
+  background: url(bg.jpg);
   color: #000000;
 }
 ul {

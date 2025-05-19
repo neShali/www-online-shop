@@ -36,6 +36,7 @@ export async function removeCartItem(
   >({
     method: 'DELETE',
     url: `/api/v1/carts/items/${item_id}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

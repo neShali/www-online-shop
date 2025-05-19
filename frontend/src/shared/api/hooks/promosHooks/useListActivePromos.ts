@@ -13,7 +13,7 @@ import type { ListActivePromosQueryResponse } from '../../types/promosTypes/List
 import { queryOptions, useQuery } from '@tanstack/react-query';
 
 export const listActivePromosQueryKey = () =>
-  ['v5', { url: '/api/v1/promos/active' }] as const;
+  [{ url: '/api/v1/promos/active' }] as const;
 
 export type ListActivePromosQueryKey = ReturnType<
   typeof listActivePromosQueryKey
@@ -36,6 +36,7 @@ export async function listActivePromos(
   >({
     method: 'GET',
     url: `/api/v1/promos/active`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

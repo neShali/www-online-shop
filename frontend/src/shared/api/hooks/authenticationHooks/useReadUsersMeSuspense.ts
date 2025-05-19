@@ -13,7 +13,7 @@ import type { ReadUsersMeQueryResponse } from '../../types/authenticationTypes/R
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 
 export const readUsersMeSuspenseQueryKey = () =>
-  ['v5', { url: '/api/v1/auth/me' }] as const;
+  [{ url: '/api/v1/auth/me' }] as const;
 
 export type ReadUsersMeSuspenseQueryKey = ReturnType<
   typeof readUsersMeSuspenseQueryKey
@@ -33,7 +33,12 @@ export async function readUsersMeSuspense(
     ReadUsersMeQueryResponse,
     ResponseErrorConfig<Error>,
     unknown
-  >({ method: 'GET', url: `/api/v1/auth/me`, ...requestConfig });
+  >({
+    method: 'GET',
+    url: `/api/v1/auth/me`,
+    baseURL: 'http://localhost:8000',
+    ...requestConfig,
+  });
   return res.data;
 }
 

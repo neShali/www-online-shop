@@ -22,7 +22,6 @@ export const getPromoSuspenseQueryKey = ({
   promo_id: GetPromoPathParams['promo_id'];
 }) =>
   [
-    'v5',
     { url: '/api/v1/promos/:promo_id', params: { promo_id: promo_id } },
   ] as const;
 
@@ -48,6 +47,7 @@ export async function getPromoSuspense(
   >({
     method: 'GET',
     url: `/api/v1/promos/${promo_id}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

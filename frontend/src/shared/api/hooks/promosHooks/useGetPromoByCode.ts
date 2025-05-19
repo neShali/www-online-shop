@@ -20,8 +20,7 @@ export const getPromoByCodeQueryKey = ({
   code,
 }: {
   code: GetPromoByCodePathParams['code'];
-}) =>
-  ['v5', { url: '/api/v1/promos/code/:code', params: { code: code } }] as const;
+}) => [{ url: '/api/v1/promos/code/:code', params: { code: code } }] as const;
 
 export type GetPromoByCodeQueryKey = ReturnType<typeof getPromoByCodeQueryKey>;
 
@@ -43,6 +42,7 @@ export async function getPromoByCode(
   >({
     method: 'GET',
     url: `/api/v1/promos/code/${code}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

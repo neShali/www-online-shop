@@ -22,7 +22,6 @@ export const getProductAverageRatingSuspenseQueryKey = ({
   product_id: GetProductAverageRatingPathParams['product_id'];
 }) =>
   [
-    'v5',
     {
       url: '/api/v1/reviews/avg/:product_id',
       params: { product_id: product_id },
@@ -53,6 +52,7 @@ export async function getProductAverageRatingSuspense(
   >({
     method: 'GET',
     url: `/api/v1/reviews/avg/${product_id}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

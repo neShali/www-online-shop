@@ -7,11 +7,13 @@
   min-width: 320px;
 }
 
-.links {
+.links,
+.btns {
   display: flex;
-  max-width: 268px;
+  max-width: 250px;
   flex-shrink: 1;
   min-width: min-content;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -22,14 +24,6 @@
   font-weight: 500;
   line-height: 1.5;
   white-space: nowrap;
-}
-
-.btns {
-  display: flex;
-  max-width: 268px;
-  min-width: min-content;
-  width: 100%;
-  flex-shrink: 1;
 }
 
 .btn {

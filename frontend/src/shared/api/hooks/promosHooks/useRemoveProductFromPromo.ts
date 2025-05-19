@@ -42,6 +42,7 @@ export async function removeProductFromPromo(
   >({
     method: 'DELETE',
     url: `/api/v1/promos/product/${promo_id}/${product_id}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

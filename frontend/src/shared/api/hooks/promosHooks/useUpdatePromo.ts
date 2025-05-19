@@ -38,6 +38,7 @@ export async function updatePromo(
   >({
     method: 'PUT',
     url: `/api/v1/promos/${promo_id}`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

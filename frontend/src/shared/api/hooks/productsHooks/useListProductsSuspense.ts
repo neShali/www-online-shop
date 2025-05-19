@@ -18,7 +18,7 @@ import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 
 export const listProductsSuspenseQueryKey = (
   params?: ListProductsQueryParams
-) => ['v5', { url: '/api/v1/products/' }, ...(params ? [params] : [])] as const;
+) => [{ url: '/api/v1/products/' }, ...(params ? [params] : [])] as const;
 
 export type ListProductsSuspenseQueryKey = ReturnType<
   typeof listProductsSuspenseQueryKey
@@ -42,6 +42,7 @@ export async function listProductsSuspense(
   >({
     method: 'GET',
     url: `/api/v1/products/`,
+    baseURL: 'http://localhost:8000',
     params,
     ...requestConfig,
   });

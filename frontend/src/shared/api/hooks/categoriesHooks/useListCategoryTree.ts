@@ -13,7 +13,7 @@ import type { ListCategoryTreeQueryResponse } from '../../types/categoriesTypes/
 import { queryOptions, useQuery } from '@tanstack/react-query';
 
 export const listCategoryTreeQueryKey = () =>
-  ['v5', { url: '/api/v1/categories/tree' }] as const;
+  [{ url: '/api/v1/categories/tree' }] as const;
 
 export type ListCategoryTreeQueryKey = ReturnType<
   typeof listCategoryTreeQueryKey
@@ -36,6 +36,7 @@ export async function listCategoryTree(
   >({
     method: 'GET',
     url: `/api/v1/categories/tree`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

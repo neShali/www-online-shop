@@ -26,7 +26,12 @@ export async function clearCart(
     ClearCartMutationResponse,
     ResponseErrorConfig<Error>,
     unknown
-  >({ method: 'DELETE', url: `/api/v1/carts/clear`, ...requestConfig });
+  >({
+    method: 'DELETE',
+    url: `/api/v1/carts/clear`,
+    baseURL: 'http://localhost:8000',
+    ...requestConfig,
+  });
   return res.data;
 }
 

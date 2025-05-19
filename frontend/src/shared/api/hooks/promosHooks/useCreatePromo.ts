@@ -36,6 +36,7 @@ export async function createPromo(
   >({
     method: 'POST',
     url: `/api/v1/promos/`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

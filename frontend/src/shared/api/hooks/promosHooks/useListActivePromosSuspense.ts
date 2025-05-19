@@ -13,7 +13,7 @@ import type { ListActivePromosQueryResponse } from '../../types/promosTypes/List
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 
 export const listActivePromosSuspenseQueryKey = () =>
-  ['v5', { url: '/api/v1/promos/active' }] as const;
+  [{ url: '/api/v1/promos/active' }] as const;
 
 export type ListActivePromosSuspenseQueryKey = ReturnType<
   typeof listActivePromosSuspenseQueryKey
@@ -36,6 +36,7 @@ export async function listActivePromosSuspense(
   >({
     method: 'GET',
     url: `/api/v1/promos/active`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

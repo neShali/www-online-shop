@@ -17,7 +17,7 @@ import type {
 import { queryOptions, useQuery } from '@tanstack/react-query';
 
 export const listCategoriesQueryKey = (params?: ListCategoriesQueryParams) =>
-  ['v5', { url: '/api/v1/categories/' }, ...(params ? [params] : [])] as const;
+  [{ url: '/api/v1/categories/' }, ...(params ? [params] : [])] as const;
 
 export type ListCategoriesQueryKey = ReturnType<typeof listCategoriesQueryKey>;
 
@@ -39,6 +39,7 @@ export async function listCategories(
   >({
     method: 'GET',
     url: `/api/v1/categories/`,
+    baseURL: 'http://localhost:8000',
     params,
     ...requestConfig,
   });

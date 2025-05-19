@@ -12,8 +12,7 @@ import type {
 import type { GetMyCartQueryResponse } from '../../types/cartsTypes/GetMyCart';
 import { queryOptions, useQuery } from '@tanstack/react-query';
 
-export const getMyCartQueryKey = () =>
-  ['v5', { url: '/api/v1/carts/me' }] as const;
+export const getMyCartQueryKey = () => [{ url: '/api/v1/carts/me' }] as const;
 
 export type GetMyCartQueryKey = ReturnType<typeof getMyCartQueryKey>;
 
@@ -31,7 +30,12 @@ export async function getMyCart(
     GetMyCartQueryResponse,
     ResponseErrorConfig<Error>,
     unknown
-  >({ method: 'GET', url: `/api/v1/carts/me`, ...requestConfig });
+  >({
+    method: 'GET',
+    url: `/api/v1/carts/me`,
+    baseURL: 'http://localhost:8000',
+    ...requestConfig,
+  });
   return res.data;
 }
 

@@ -36,6 +36,7 @@ export async function deleteProduct(
   >({
     method: 'DELETE',
     url: `/api/v1/products/${product_id}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

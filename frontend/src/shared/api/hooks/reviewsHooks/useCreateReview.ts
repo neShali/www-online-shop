@@ -38,6 +38,7 @@ export async function createReview(
   >({
     method: 'POST',
     url: `/api/v1/reviews/`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

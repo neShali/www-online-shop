@@ -22,7 +22,6 @@ export const getProductQueryKey = ({
   product_id: GetProductPathParams['product_id'];
 }) =>
   [
-    'v5',
     { url: '/api/v1/products/:product_id', params: { product_id: product_id } },
   ] as const;
 
@@ -46,6 +45,7 @@ export async function getProduct(
   >({
     method: 'GET',
     url: `/api/v1/products/${product_id}`,
+    baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;

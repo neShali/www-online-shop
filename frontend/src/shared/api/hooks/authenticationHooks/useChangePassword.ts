@@ -38,6 +38,7 @@ export async function changePassword(
   >({
     method: 'POST',
     url: `/api/v1/auth/password`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

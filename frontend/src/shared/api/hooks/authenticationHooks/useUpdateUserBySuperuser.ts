@@ -40,6 +40,7 @@ export async function updateUserBySuperuser(
   >({
     method: 'PUT',
     url: `/api/v1/auth/${user_id}`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

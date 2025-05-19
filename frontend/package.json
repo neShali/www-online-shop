@@ -7,10 +7,15 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "kubb": "kubb"
   },
   "dependencies": {
+    "@kubb/plugin-client": "^3.10.12",
+    "@kubb/plugin-react-query": "^3.10.12",
     "@tanstack/react-query": "^5.76.1",
+    "axios": "^1.9.0",
+    "kubb": "^3.0.77",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router": "^7.6.0"

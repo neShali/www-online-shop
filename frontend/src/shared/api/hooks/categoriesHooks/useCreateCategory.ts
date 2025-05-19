@@ -38,6 +38,7 @@ export async function createCategory(
   >({
     method: 'POST',
     url: `/api/v1/categories/`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

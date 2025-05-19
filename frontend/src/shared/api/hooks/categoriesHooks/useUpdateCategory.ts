@@ -40,6 +40,7 @@ export async function updateCategory(
   >({
     method: 'PUT',
     url: `/api/v1/categories/${category_id}`,
+    baseURL: 'http://localhost:8000',
     data,
     ...requestConfig,
   });

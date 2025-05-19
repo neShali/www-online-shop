@@ -9,68 +9,68 @@ import type {
   QueryObserverOptions,
   UseQueryResult,
 } from '@tanstack/react-query';
-import type { ReadUsersMeQueryResponse } from '../../types/authenticationTypes/ReadUsersMe';
+import type { RootQueryResponse } from '../../types/undefinedTypes/Root';
 import { queryOptions, useQuery } from '@tanstack/react-query';
 
-export const readUsersMeQueryKey = () => [{ url: '/api/v1/auth/me' }] as const;
+export const rootQueryKey = () => [{ url: '/' }] as const;
 
-export type ReadUsersMeQueryKey = ReturnType<typeof readUsersMeQueryKey>;
+export type RootQueryKey = ReturnType<typeof rootQueryKey>;
 
 /**
- * @description Get current user.
- * @summary Read Users Me
- * {@link /api/v1/auth/me}
+ * @description Root endpoint.
+ * @summary Root
+ * {@link /}
  */
-export async function readUsersMe(
+export async function root(
   config: Partial<RequestConfig> & { client?: typeof client } = {}
 ) {
   const { client: request = client, ...requestConfig } = config;
 
   const res = await request<
-    ReadUsersMeQueryResponse,
+    RootQueryResponse,
     ResponseErrorConfig<Error>,
     unknown
   >({
     method: 'GET',
-    url: `/api/v1/auth/me`,
+    url: `/`,
     baseURL: 'http://localhost:8000',
     ...requestConfig,
   });
   return res.data;
 }
 
-export function readUsersMeQueryOptions(
+export function rootQueryOptions(
   config: Partial<RequestConfig> & { client?: typeof client } = {}
 ) {
-  const queryKey = readUsersMeQueryKey();
+  const queryKey = rootQueryKey();
   return queryOptions<
-    ReadUsersMeQueryResponse,
+    RootQueryResponse,
     ResponseErrorConfig<Error>,
-    ReadUsersMeQueryResponse,
+    RootQueryResponse,
     typeof queryKey
   >({
     queryKey,
     queryFn: async ({ signal }) => {
       config.signal = signal;
-      return readUsersMe(config);
+      return root(config);
     },
   });
 }
 
 /**
- * @description Get current user.
- * @summary Read Users Me
- * {@link /api/v1/auth/me}
+ * @description Root endpoint.
+ * @summary Root
+ * {@link /}
  */
-export function useReadUsersMe<
-  TData = ReadUsersMeQueryResponse,
-  TQueryData = ReadUsersMeQueryResponse,
-  TQueryKey extends QueryKey = ReadUsersMeQueryKey,
+export function useRoot<
+  TData = RootQueryResponse,
+  TQueryData = RootQueryResponse,
+  TQueryKey extends QueryKey = RootQueryKey,
 >(
   options: {
     query?: Partial<
       QueryObserverOptions<
-        ReadUsersMeQueryResponse,
+        RootQueryResponse,
         ResponseErrorConfig<Error>,
         TData,
         TQueryData,
@@ -84,11 +84,11 @@ export function useReadUsersMe<
     query: { client: queryClient, ...queryOptions } = {},
     client: config = {},
   } = options ?? {};
-  const queryKey = queryOptions?.queryKey ?? readUsersMeQueryKey();
+  const queryKey = queryOptions?.queryKey ?? rootQueryKey();
 
   const query = useQuery(
     {
-      ...(readUsersMeQueryOptions(config) as unknown as QueryObserverOptions),
+      ...(rootQueryOptions(config) as unknown as QueryObserverOptions),
       queryKey,
       ...(queryOptions as unknown as Omit<QueryObserverOptions, 'queryKey'>),
     },

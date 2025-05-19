@@ -33,7 +33,7 @@ export default function Header() {
             <use xlinkHref="symbol-defs.svg#icon-bag" />
           </svg>
         </Link>
-        <Link className={styles.btn} to="/profile">
+        <Link className={styles.btn} to="/login">
           <svg width="17" height="17">
             <use xlinkHref="symbol-defs.svg#icon-user" />
           </svg>
