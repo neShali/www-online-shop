@@ -1,0 +1,32 @@
+.main_card {
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 416px;
+    height: 49px;
+    background: #d9d9d9;
+    border: 1px solid transparent;
+    font-size: 12px;
+    font-weight: 500;
+    box-sizing: border-box;
+    &:hover {
+      border: 1px black solid;
+    }
+    &__small {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 229px;
+      height: 40px;
+      background: #d9d9d9;
+      border: 1px solid transparent;
+      font-size: 12px;
+      font-weight: 500;
+      box-sizing: border-box;
+      &:hover {
+        border: 1px black solid;
+      }
+    }
+  }
+}
