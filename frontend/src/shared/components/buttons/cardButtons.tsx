@@ -1,4 +1,4 @@
-import styles from './card_buttons.module.scss';
+import styles from './cardButtons.module.scss';
 
 type CardButtonProps = {
   text?: string;

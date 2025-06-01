@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './gender_tabs.module.scss';
+import styles from './genderTabs.module.scss';
 
 const genders = ['(All)', 'Men', 'Women', 'KID'];
 

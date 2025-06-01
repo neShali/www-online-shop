@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './category_tabs.module.scss';
+import styles from './categoryTabs.module.scss';
 
 const categories = [
   'new',

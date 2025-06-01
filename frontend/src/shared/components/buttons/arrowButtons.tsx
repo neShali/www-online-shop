@@ -1,4 +1,5 @@
-import styles from './arrow_buttons.module.scss';
+import styles from './arrowButtons.module.scss';
+
 type ArrowButtonProps = {
   direction: 'left' | 'right';
 };

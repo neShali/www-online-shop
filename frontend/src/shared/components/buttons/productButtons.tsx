@@ -1,13 +1,12 @@
-// import { Link } from 'react-router';
-import styles from './products_buttons.module.scss';
+import styles from './productButtons.module.scss';
 
 type ProductsButtonProps = {
   text?: string;
   link?: string;
-  size?: 'default' | 'small'; 
+  size?: 'default' | 'small';
 };
 
-const ProductsButton = ({
+const ProductButton = ({
   text = 'Go To Shop',
   link = '',
   size = 'default',
@@ -27,4 +26,4 @@ const ProductsButton = ({
   );
 };
 
-export default ProductsButton;
+export default ProductButton;

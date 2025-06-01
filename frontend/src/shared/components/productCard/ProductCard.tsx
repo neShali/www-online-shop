@@ -1,7 +1,7 @@
-import type { ProductCreate } from '../../api/types/ProductCreate';
+import type { Product } from '../../api';
 
 type ProductCardProps = {
-  product: ProductCreate;
+  product: Product;
   onAddToCart: (productId: number) => void;
 };
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './size_tabs.module.scss';
+import styles from './sizeTabs.module.scss';
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', '2X'];
 
