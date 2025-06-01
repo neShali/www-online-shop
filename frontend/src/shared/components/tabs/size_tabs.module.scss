@@ -1,0 +1,22 @@
+.shop {
+  &__size {
+    &__list {
+      margin-bottom: 20px;
+      display: flex;
+    }
+    &__btn {
+      height: 37px;
+      width: 39px;
+      border: 1px #a3a3a3 solid;
+      font-size: 14px;
+      font-weight: 500;
+      color: #a3a3a3;
+    }
+  }
+}
+
+.active {
+  background-color: #d9d9d9;
+  border: 1px black solid;
+  color: black;
+}

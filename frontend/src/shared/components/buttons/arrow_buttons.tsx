@@ -9,10 +9,7 @@ const ArrowButton = ({ direction }: ArrowButtonProps) => {
       ? styles.collection__arrow__left
       : styles.collection__arrow__right;
 
-  const iconId =
-    direction === 'left'
-      ? 'icon-short_arrow_left'
-      : 'icon-short_arrow_right_skim';
+  const iconId = 'icon-short_arrow_left';
 
   return (
     <button className={className} type="button">

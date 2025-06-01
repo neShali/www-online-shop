@@ -26,6 +26,7 @@
         border: 1px black solid;
       }
       > svg {
+        transform: scaleX(-1);
         fill: none;
         stroke: #0c0c0c;
       }
