@@ -1,0 +1,35 @@
+.collection {
+  &__arrow {
+    &__left {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      &:hover {
+        border: 1px black solid;
+      }
+      > svg {
+        fill: none;
+        stroke: #0c0c0c;
+      }
+    }
+    &__right {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      &:hover {
+        border: 1px black solid;
+      }
+      > svg {
+        transform: scaleX(-1);
+        fill: none;
+        stroke: #0c0c0c;
+      }
+    }
+  }
+}

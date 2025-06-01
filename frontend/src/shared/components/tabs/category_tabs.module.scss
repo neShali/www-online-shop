@@ -1,0 +1,24 @@
+.shop {
+  &__category {
+    &__list {
+      width: 446px;//временно 
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2px;
+    }
+    &__btn {
+      width: 101px;
+      height: 24px;
+      color: #5e5e5e;
+      font-size: 10px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+  }
+}
+.active {
+  background-color: #d9d9d9;
+  border: 1px black solid;
+  color: black;
+}
