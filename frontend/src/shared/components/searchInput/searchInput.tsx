@@ -1,8 +1,4 @@
-import React, {
-  type ChangeEventHandler,
-  type FC,
-  type ReactElement,
-} from 'react';
+import React, { type ChangeEventHandler, type FC } from 'react';
 import styles from './SearchInput.module.scss';
 
 export interface SearchInputProps
@@ -26,7 +22,7 @@ export const SearchInput: FC<SearchInputProps> = ({
   placeholder = 'Search',
   className = '',
   ...props
-}): ReactElement => {
+}) => {
   return (
     <div className={`${styles.container} ${className}`}>
       <svg className={styles.icon} viewBox="0 0 24 24" aria-hidden="true">

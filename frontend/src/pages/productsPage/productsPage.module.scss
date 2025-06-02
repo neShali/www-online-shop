@@ -1,0 +1,72 @@
+.wrapper {
+  display: flex;
+}
+
+.sidebar {
+  flex: 0 0 252px;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.filterTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.smallInput {
+  width: 80px;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 0.25rem;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.current {
+  font-weight: 600;
+  color: #333;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.searchWrapper {
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.tabsWrapper {
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.main::after {
+  content: '';
+  flex: 1;
+}

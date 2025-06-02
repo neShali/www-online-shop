@@ -6,7 +6,7 @@ type CardButtonProps = {
   size?: 'default' | 'small';
 };
 
-const CardButton = ({
+export const CardButton = ({
   text = 'ADD',
   link = '',
   size = 'default',
@@ -20,5 +20,3 @@ const CardButton = ({
     </a>
   );
 };
-
-export default CardButton;

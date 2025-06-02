@@ -3,7 +3,7 @@ import styles from './genderTabs.module.scss';
 
 const genders = ['(All)', 'Men', 'Women', 'KID'];
 
-const GenderTabs = () => {
+export const GenderTabs = () => {
   const [activeGender, setActiveGender] = useState<string>('(All)');
 
   return (
@@ -21,5 +21,3 @@ const GenderTabs = () => {
     </ul>
   );
 };
-
-export default GenderTabs;

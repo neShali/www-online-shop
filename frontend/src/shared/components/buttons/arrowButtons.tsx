@@ -4,7 +4,7 @@ type ArrowButtonProps = {
   direction: 'left' | 'right';
 };
 
-const ArrowButton = ({ direction }: ArrowButtonProps) => {
+export const ArrowButton = ({ direction }: ArrowButtonProps) => {
   const className =
     direction === 'left'
       ? styles.collection__arrow__left
@@ -20,5 +20,3 @@ const ArrowButton = ({ direction }: ArrowButtonProps) => {
     </button>
   );
 };
-
-export default ArrowButton;

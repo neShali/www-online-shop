@@ -1,6 +1,6 @@
 import styles from './plusButtons.module.scss';
 
-const PlusButton = () => {
+export const PlusButton = () => {
   return (
     <button className={styles.shop__catalog__btn}>
       <svg width="12" height="12">
@@ -9,5 +9,3 @@ const PlusButton = () => {
     </button>
   );
 };
-
-export default PlusButton;

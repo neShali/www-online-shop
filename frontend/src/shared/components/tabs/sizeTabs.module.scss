@@ -1,18 +1,16 @@
-.shop {
-  &__size {
-    &__list {
-      margin-bottom: 20px;
-      display: flex;
-    }
-    &__btn {
-      height: 37px;
-      width: 39px;
-      border: 1px #a3a3a3 solid;
-      font-size: 14px;
-      font-weight: 500;
-      color: #a3a3a3;
-    }
-  }
+.wrapper {
+  display: flex;
+  gap: 5px;
+  margin: 15px 0;
+}
+
+.tab {
+  height: 38px;
+  width: 38px;
+  border: 1px #a3a3a3 solid;
+  font-size: 14px;
+  font-weight: 500;
+  color: #a3a3a3;
 }
 
 .active {
