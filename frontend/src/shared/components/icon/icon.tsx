@@ -18,7 +18,7 @@ type IconName =
 
 type IconProps = {
   name: IconName;
-  className: string;
+  className?: string;
 };
 
 export const Icon = ({ name, className }: IconProps) => {

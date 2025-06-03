@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { categoriesHooks, productsHooks } from '../../shared/api';
 import { Accordion } from '../../shared/components/accordion';
 import { SearchInput } from '../../shared/components/searchInput';
@@ -9,7 +9,7 @@ import styles from './productsPage.module.scss';
 import { Checkbox } from '../../shared/components/checkbox';
 
 export function ProductsPage() {
-  const [activeCategory, setActiveCategory] = useState<number>();
+  const [activeCategory, setActiveCategory] = useState<number | null>();
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [stock, setStock] = useState<'In stock' | 'Out of stock'>();
   const [activeColor, setActiveColor] = useState<string>('');
@@ -22,11 +22,16 @@ export function ProductsPage() {
 
   const { items: products, page, size, pages, total } = data;
 
-  const { data: categories } = categoriesHooks.useListCategories();
+  const { data: rawCategories } = categoriesHooks.useListCategories();
+
+  const categories = useMemo(() => {
+    if (!rawCategories) return [];
+    return [{ id: null, name: 'All' }, ...rawCategories];
+  }, [rawCategories]);
 
   const colors = ['red', 'black', 'white'];
 
-  const handleCategoryChange = (categoryId: number) => {
+  const handleCategoryChange = (categoryId: number | null) => {
     setActiveCategory(categoryId);
   };
 
@@ -37,7 +42,7 @@ export function ProductsPage() {
   return (
     <div className={styles.wrapper}>
       <aside className={styles.sidebar}>
-        <h3 className={styles.title}>Filters</h3>
+        <h3 className={styles.filterTitle}>Filters</h3>
         <span className={styles.label}>Size</span>
         <SizeTabs />
         <Accordion title="Availability">
@@ -97,14 +102,14 @@ export function ProductsPage() {
           </div>
         </Accordion>
       </aside>
+
       <div className={styles.main}>
         <div className={styles.breadcrumb}>
           Home / <span className={styles.current}>Products</span>
         </div>
 
         <h1 className={styles.title}>PRODUCTS</h1>
-
-        <div className={styles.searchWrapper}>
+        <div className={styles.searchAndTabsContainer}>
           <SearchInput
             type="search"
             placeholder="Search"
@@ -112,16 +117,13 @@ export function ProductsPage() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className={styles.searchInput}
           />
-        </div>
 
-        <div className={styles.tabsWrapper}>
           <CategoryTabs
             categories={categories}
             onCategoryClick={handleCategoryChange}
             activeCategory={activeCategory}
           />
         </div>
-
         <div className={styles.grid}>
           {products.map((product) => (
             <ProductCard

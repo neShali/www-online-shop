@@ -1,3 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 50px;
+}
+body {
+  margin: 0;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -22,6 +35,10 @@ img {
 
 button {
   cursor: pointer;
+}
+
+input,
+button {
   font-family: inherit;
 }
 
@@ -36,10 +53,4 @@ body {
 }
 ul {
   list-style-type: none;
-}
-
-.container {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 10px;
 }

@@ -5,10 +5,10 @@ export type Category = {
   /**
    * @type integer
    */
-  id: number;
+  id: number | null;
   /**
    * @type string, date-time
    */
-  created_at: string;
+  created_at?: string;
   updated_at?: string | null;
 };
