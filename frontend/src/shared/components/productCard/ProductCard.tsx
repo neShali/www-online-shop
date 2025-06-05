@@ -1,39 +1,54 @@
+import React from 'react';
+import { Link } from 'react-router';
+
+import styles from './ProductCard.module.scss';
 import type { Product } from '../../api';
 
 type ProductCardProps = {
   product: Product;
-  onAddToCart: (productId: number) => void;
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({
-  product,
-  onAddToCart,
-}) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { sku: tagName, color, color_hex } = product.variants?.[0] ?? {};
+
+  const uniqueColors = new Set(product.variants?.map((item) => item.color));
+  const countUniqueColors = uniqueColors.size;
+
   return (
-    <a href={``} className="shop__catalog__item">
-      <div className="shop__catalog__card">
+    <Link
+      to={`/products/${product.id}`}
+      className={styles.cardWrapper}
+      aria-label={`View details for ${product.name}`}
+    >
+      <div className={styles.imageContainer}>
         <img
           src={product.image_url ?? '/placeholder.png'}
           alt={product.name ?? 'Product'}
-          style={{ width: '100%', height: 'auto' }}
+          className={styles.productImage}
         />
-        <button
-          className="shop__catalog__btn"
-          onClick={(e) => {
-            e.preventDefault();
-            onAddToCart(0);
-          }}
-        >
-          <svg width="12" height="12">
-            <use xlinkHref="symbol-defs.svg#icon-plus" />
-          </svg>
-        </button>
       </div>
-      <p className="shop__catalog__tag">{product.name ?? 'Unnamed product'}</p>
-      <div className="shop__catalog__desc">
-        <p>{product.description ?? ''}</p>
-        <span>${product.price?.toFixed(2) ?? '—'}</span>
+      <div className={styles.info}>
+        <div className={styles.tagRow}>
+          <span className={styles.tagName}>{tagName}</span>
+          {color && color_hex && (
+            <span
+              className={styles.tagColor}
+              style={{ backgroundColor: color_hex }}
+              aria-label={`Color: ${color}`}
+            />
+          )}
+
+          {countUniqueColors > 0 && (
+            <span className={styles.tagVariants}>+{countUniqueColors}</span>
+          )}
+        </div>
+
+        <div className={styles.titleAndPriceWrapper}>
+          <div className={styles.title}>{product.name}</div>
+
+          <div className={styles.price}>${product.price?.toFixed(2)}</div>
+        </div>
       </div>
-    </a>
+    </Link>
   );
 };

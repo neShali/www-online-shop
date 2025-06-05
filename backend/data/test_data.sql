@@ -1,5 +1,17 @@
 -- Test data for the clothing shop API
-
+BEGIN;
+TRUNCATE TABLE
+    cart_items,
+    carts,
+    product_variants,
+    reviews,
+    product_promos,
+    products,
+    categories,
+    promos,
+    users
+    RESTART IDENTITY CASCADE;
+COMMIT;
 -- Users
 -- Default password is 'password' (hashed with bcrypt)
 INSERT INTO users (email, username, hashed_password, is_active, is_superuser) VALUES
@@ -34,22 +46,22 @@ SELECT setval('categories_id_seq', (SELECT MAX(id) FROM categories));
 -- Products
 INSERT INTO products (id, name, description, price, is_active, category_id, image_url) VALUES
 -- Men's Tops
-(1, 'Classic Cotton T-Shirt', 'Soft and comfortable basic t-shirt for everyday wear', 24.99, true, 4, 'https://example.com/mens-tshirt.jpg'),
-(2, 'Oxford Button-Down Shirt', 'Crisp and clean button-down shirt for casual or formal occasions', 59.99, true, 4, 'https://example.com/mens-buttondown.jpg'),
-(3, 'Casual Polo Shirt', 'Breathable polo shirt with subtle logo detailing', 39.99, true, 4, 'https://example.com/mens-polo.jpg'),
+(1, 'Classic Cotton T-Shirt', 'Soft and comfortable basic t-shirt for everyday wear', 24.99, true, 4, 'https://image.hm.com/assets/hm/cc/2c/cc2cc240f12a058b64f004fc142f252e3c73f860.jpg?imwidth=1536'),
+(2, 'Oxford Button-Down Shirt', 'Crisp and clean button-down shirt for casual or formal occasions', 59.99, true, 4, 'https://image.hm.com/assets/hm/d5/12/d512544cab2554973536f2d31fc092edf3f4d10e.jpg?imwidth=1536'),
+(3, 'Casual Polo Shirt', 'Breathable polo shirt with subtle logo detailing', 39.99, true, 4, 'https://image.hm.com/assets/hm/73/09/73091f235b4f6690c9ee227664dd937c8f253c08.jpg?imwidth=1536'),
 
 -- Men's Bottoms
-(4, 'Slim Fit Jeans', 'Modern slim fit jeans with slight stretch for comfort', 69.99, true, 5, 'https://example.com/mens-slim-jeans.jpg'),
-(5, 'Chino Trousers', 'Versatile chino trousers suitable for work and weekends', 49.99, true, 5, 'https://example.com/mens-chinos.jpg'),
-(6, 'Athletic Shorts', 'Lightweight running shorts with moisture-wicking technology', 34.99, true, 5, 'https://example.com/mens-shorts.jpg'),
+(4, 'Slim Fit Jeans', 'Modern slim fit jeans with slight stretch for comfort', 69.99, true, 5, 'https://image.hm.com/assets/hm/e6/64/e664e8305e33d7437bd792442789225a0d580bc3.jpg?imwidth=1536'),
+(5, 'Chino Trousers', 'Versatile chino trousers suitable for work and weekends', 49.99, true, 5, 'https://image.hm.com/assets/hm/bb/b4/bbb4cfa3dffe0fe61efb811dbc37b93283cfff22.jpg?imwidth=1536'),
+(6, 'Athletic Shorts', 'Lightweight running shorts with moisture-wicking technology', 34.99, true, 5, 'https://image.hm.com/assets/hm/47/6b/476b80e4f636a6fb889c1e4e1c4e93b4784def90.jpg?imwidth=1536'),
 
 -- Women's Tops
-(7, 'V-Neck Blouse', 'Elegant V-neck blouse with slight drape', 44.99, true, 7, 'https://example.com/womens-blouse.jpg'),
-(8, 'Fitted Turtleneck', 'Soft and stretchy turtleneck for layering', 29.99, true, 7, 'https://example.com/womens-turtleneck.jpg'),
+(7, 'V-Neck Blouse', 'Elegant V-neck blouse with slight drape', 44.99, true, 7, 'https://image.hm.com/assets/hm/20/24/2024bf909c3cfbd94df7851f037c9bcd2142865e.jpg?imwidth=1536'),
+(8, 'Fitted Turtleneck', 'Soft and stretchy turtleneck for layering', 29.99, true, 7, 'https://image.hm.com/assets/hm/1f/ba/1fba76215c6836a080f6109245f1c9fbdc72c665.jpg?imwidth=1536'),
 
 -- Women's Dresses
-(9, 'Wrap Dress', 'Flattering wrap dress for all occasions', 89.99, true, 9, 'https://example.com/womens-wrap-dress.jpg'),
-(10, 'Maxi Sundress', 'Flowing long sundress with floral pattern', 79.99, true, 9, 'https://example.com/womens-maxi-dress.jpg');
+(9, 'Wrap Dress', 'Flattering wrap dress for all occasions', 89.99, true, 9, 'https://image.hm.com/assets/hm/d3/35/d33516c1008617181668c1730ae9fe99460b86c5.jpg?imwidth=1536'),
+(10, 'Maxi Sundress', 'Flowing long sundress with floral pattern', 79.99, true, 9, 'https://image.hm.com/assets/hm/5a/a6/5aa68858b25363e6ccaba02b693681bfc31f67f2.jpg?imwidth=1536');
 
 -- Reset sequence for products
 SELECT setval('products_id_seq', (SELECT MAX(id) FROM products));

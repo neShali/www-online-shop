@@ -35,8 +35,6 @@ export function ProductsPage() {
     setActiveCategory(categoryId);
   };
 
-  const handleAddToCart = () => {};
-
   console.log({ isLoading, isError, error, page, size, pages, total });
 
   return (
@@ -126,11 +124,7 @@ export function ProductsPage() {
         </div>
         <div className={styles.grid}>
           {products.map((product) => (
-            <ProductCard
-              product={product}
-              key={product.id}
-              onAddToCart={handleAddToCart}
-            />
+            <ProductCard product={product} key={product.id} />
           ))}
         </div>
       </div>
