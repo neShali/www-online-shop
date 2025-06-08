@@ -1,32 +1,29 @@
-import { useState } from 'react';
 import styles from './categoryTabs.module.scss';
+import type { Category } from '../../api';
 
-const categories = [
-  'new',
-  'best sellers',
-  'shirts',
-  't-shirts',
-  'polo shirts',
-  'jeans',
-  'shorts',
-  'lackets',
-];
+type CategoryTabsProps = {
+  categories?: Category[];
+  onCategoryClick: (categoryId: number | null) => void;
+  activeCategory?: number | null;
+};
 
-const CategoryTabs = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('new');
-
+export const CategoryTabs: React.FC<CategoryTabsProps> = ({
+  categories,
+  onCategoryClick,
+  activeCategory,
+}) => {
   return (
-    <div className={styles.shop__categories}>
-      <ul className={styles.shop__category__list}>
-        {categories.map((category) => (
-          <li key={category} className={styles.shop__category__item}>
+    <div className={styles.wrapper}>
+      <ul className={styles.category__list}>
+        {categories?.map((category) => (
+          <li key={category.id} className={styles.category__item}>
             <button
-              className={`${styles.shop__category__btn} ${
-                activeCategory === category ? styles.active : ''
+              className={`${styles.category__btn} ${
+                activeCategory === category.id ? styles.active : ''
               }`}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => onCategoryClick(category.id)}
             >
-              {category}
+              {category.name}
             </button>
           </li>
         ))}
@@ -34,5 +31,3 @@ const CategoryTabs = () => {
     </div>
   );
 };
-
-export default CategoryTabs;

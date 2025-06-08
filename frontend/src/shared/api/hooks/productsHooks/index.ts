@@ -1,7 +1,7 @@
-export * from './useCreateProduct';
-export * from './useDeleteProduct';
-export * from './useGetProduct';
-export * from './useGetProductSuspense';
-export * from './useListProducts';
-export * from './useListProductsSuspense';
-export * from './useUpdateProduct';
+export { useCreateProduct } from './useCreateProduct';
+export { useDeleteProduct } from './useDeleteProduct';
+export { useGetProduct } from './useGetProduct';
+export { useGetProductSuspense } from './useGetProductSuspense';
+export { useListProducts } from './useListProducts';
+export { useListProductsSuspense } from './useListProductsSuspense';
+export { useUpdateProduct } from './useUpdateProduct';

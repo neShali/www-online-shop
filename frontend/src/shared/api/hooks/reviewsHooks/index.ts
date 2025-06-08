@@ -1,7 +1,7 @@
-export * from './useCreateReview';
-export * from './useDeleteReview';
-export * from './useGetProductAverageRating';
-export * from './useGetProductAverageRatingSuspense';
-export * from './useListProductReviews';
-export * from './useListProductReviewsSuspense';
-export * from './useUpdateReview';
+export { useCreateReview } from './useCreateReview';
+export { useDeleteReview } from './useDeleteReview';
+export { useGetProductAverageRating } from './useGetProductAverageRating';
+export { useGetProductAverageRatingSuspense } from './useGetProductAverageRatingSuspense';
+export { useListProductReviews } from './useListProductReviews';
+export { useListProductReviewsSuspense } from './useListProductReviewsSuspense';
+export { useUpdateReview } from './useUpdateReview';

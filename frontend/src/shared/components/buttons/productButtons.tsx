@@ -6,7 +6,7 @@ type ProductsButtonProps = {
   size?: 'default' | 'small';
 };
 
-const ProductButton = ({
+export const ProductButton = ({
   text = 'Go To Shop',
   link = '',
   size = 'default',
@@ -25,5 +25,3 @@ const ProductButton = ({
     </a>
   );
 };
-
-export default ProductButton;

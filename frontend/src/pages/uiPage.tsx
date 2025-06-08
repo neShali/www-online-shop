@@ -1,11 +1,11 @@
-import ArrowButton from '../shared/components/buttons/arrowButtons';
-import CardButton from '../shared/components/buttons/cardButtons';
-import PlusButton from '../shared/components/buttons/plusButtons';
-import ProductButton from '../shared/components/buttons/productButtons';
-import { ProductCard } from '../shared/components/productCard/ProductCard';
-import CategoryTabs from '../shared/components/tabs/categoryTabs';
-import GenderTabs from '../shared/components/tabs/genderTabs';
-import SizeTabs from '../shared/components/tabs/sizeTabs';
+import {
+  ProductButton,
+  CardButton,
+  ArrowButton,
+  PlusButton,
+} from '../shared/components/buttons';
+import { ProductCard } from '../shared/components/productCard';
+import { CategoryTabs, SizeTabs, GenderTabs } from '../shared/components/tabs';
 
 export default function UiPage() {
   return (

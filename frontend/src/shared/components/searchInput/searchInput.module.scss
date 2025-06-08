@@ -1,0 +1,43 @@
+.container {
+  height: fit-content;
+  width: 367px;
+  display: flex;
+  align-items: center;
+  background-color: #d9d9d9;
+  padding: 16px;
+}
+
+.icon {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  color: #888;
+  margin-right: 10px;
+}
+
+.input {
+  flex: 1 1 auto;
+  border: none;
+  background: transparent;
+  color: #333;
+
+  &::placeholder {
+    color: #000000a8;
+    font-size: 12px;
+    text-align: right;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus::-webkit-search-cancel-button {
+    filter: invert(50%);
+  }
+}
+
+.input::-webkit-search-decoration,
+.input::-webkit-search-results-button,
+.input::-webkit-search-results-decoration {
+  display: none;
+}

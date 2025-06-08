@@ -62,7 +62,6 @@ export type * from './types/reviewsTypes/ListProductReviews';
 export type * from './types/reviewsTypes/UpdateReview';
 export type * from './types/ReviewUpdate';
 export type * from './types/Token';
-export type * from './types/undefinedTypes/Root';
 export type * from './types/User';
 export type * from './types/UserCreate';
 export type * from './types/UserUpdate';

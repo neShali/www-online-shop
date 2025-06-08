@@ -1,0 +1,72 @@
+.wrapper {
+  display: flex;
+}
+
+.sidebar {
+  flex: 0 0 254px;
+  margin: 140px 50px 0 0;
+}
+
+.filterTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.label {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.smallInput {
+  width: 80px;
+  padding: 6px 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 4px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  margin-top: 58px;
+}
+
+.breadcrumb {
+  font-size: 12px;
+  color: #000000a8;
+
+  margin-bottom: 4px;
+}
+
+.current {
+  font-weight: 600;
+  color: #333;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.searchAndTabsContainer {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.searchWrapper {
+  width: 367px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
+  gap: 32px 40px;
+}
+
+.main::after {
+  content: '';
+  flex: 1;
+}

@@ -2,9 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 50px 50px 0;
   flex-wrap: nowrap;
-  min-width: 320px;
+  width: 1280px;
 }
 
 .links,
@@ -29,6 +28,7 @@
 .btn {
   color: #fff;
   background-color: #000000;
+  opacity: 0.9;
   display: flex;
   justify-content: center;
   align-items: center;
