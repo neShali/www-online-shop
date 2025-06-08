@@ -1,0 +1,79 @@
+.info {
+  position: relative;
+  border: 1px solid #d9d9d9;
+  padding: 66px 39px 25px 37px;
+  width: 306px;
+}
+.likeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  svg {
+    stroke: #000;
+    fill: none;
+  }
+}
+.desc {
+  .title {
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 21px;
+  }
+  .price {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 53px;
+  }
+  .subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 55px;
+  }
+}
+.colorBlock,
+.sizeBlock {
+  margin-bottom: 20px;
+  p {
+    font-size: 12px;
+    font-weight: 250;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+}
+.colorList {
+  display: flex;
+  gap: 4px;
+  button {
+    width: 35px;
+    height: 36px;
+    border: none;
+  }
+}
+.sizeList {
+  display: flex;
+  gap: 4px;
+  button {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #a3a3a3;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+.addBtn {
+  display: block;
+  width: 229px;
+  height: 40px;
+  background: #d9d9d9;
+  border: none;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 10px;
+}

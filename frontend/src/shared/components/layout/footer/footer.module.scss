@@ -1,0 +1,46 @@
+.footer {
+  background: #fafafa;
+  padding: 40px 0;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.title {
+  font-size: 14px;
+  font-weight: 600;
+}
+.list,
+.langList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 8px;
+}
+.link,
+.langBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+.tech {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.techLogo {
+  display: block;
+}
+.techName {
+  font-size: 16px;
+  font-weight: 700;
+}

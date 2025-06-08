@@ -93,18 +93,18 @@ INSERT INTO product_variants (product_id, size, color, color_hex, stock, sku) VA
 (2, 'XL', 'White', '#FFFFFF', 10, 'OXFORD-XL-WHITE'),
 
 -- Slim Fit Jeans variants
-(4, '30x30', 'Blue', '#0000FF', 8, 'SLIM-30-30-BLUE'),
-(4, '32x30', 'Blue', '#0000FF', 10, 'SLIM-32-30-BLUE'),
-(4, '34x30', 'Blue', '#0000FF', 12, 'SLIM-34-30-BLUE'),
-(4, '36x30', 'Blue', '#0000FF', 8, 'SLIM-36-30-BLUE'),
-(4, '30x32', 'Blue', '#0000FF', 8, 'SLIM-30-32-BLUE'),
-(4, '32x32', 'Blue', '#0000FF', 10, 'SLIM-32-32-BLUE'),
-(4, '34x32', 'Blue', '#0000FF', 12, 'SLIM-34-32-BLUE'),
-(4, '36x32', 'Blue', '#0000FF', 8, 'SLIM-36-32-BLUE'),
-(4, '30x30', 'Black', '#000000', 8, 'SLIM-30-30-BLACK'),
-(4, '32x30', 'Black', '#000000', 10, 'SLIM-32-30-BLACK'),
-(4, '34x30', 'Black', '#000000', 12, 'SLIM-34-30-BLACK'),
-(4, '36x30', 'Black', '#000000', 8, 'SLIM-36-30-BLACK'),
+(4, 'S', 'Blue', '#0000FF', 8, 'SLIM-30-30-BLUE'),
+(4, 'M', 'Blue', '#0000FF', 10, 'SLIM-32-30-BLUE'),
+(4, 'L', 'Blue', '#0000FF', 12, 'SLIM-34-30-BLUE'),
+(4, 'XL', 'Blue', '#0000FF', 8, 'SLIM-36-30-BLUE'),
+(4, 'S', 'Blue', '#0000FF', 8, 'SLIM-30-32-BLUE'),
+(4, 'M', 'Blue', '#0000FF', 10, 'SLIM-32-32-BLUE'),
+(4, 'L', 'Blue', '#0000FF', 12, 'SLIM-34-32-BLUE'),
+(4, 'XL', 'Blue', '#0000FF', 8, 'SLIM-36-32-BLUE'),
+(4, 'S', 'Black', '#000000', 8, 'SLIM-30-30-BLACK'),
+(4, 'M', 'Black', '#000000', 10, 'SLIM-32-30-BLACK'),
+(4, 'L', 'Black', '#000000', 12, 'SLIM-34-30-BLACK'),
+(4, 'XL', 'Black', '#000000', 8, 'SLIM-36-30-BLACK');
 
 -- V-Neck Blouse variants
 (7, 'XS', 'White', '#FFFFFF', 8, 'VNECK-XS-WHITE'),

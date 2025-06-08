@@ -7,15 +7,22 @@ import { ProductCard } from '../../shared/components/productCard';
 
 import styles from './productsPage.module.scss';
 import { Checkbox } from '../../shared/components/checkbox';
+import { useGetAllVariants } from '../../shared/hooks/useGetAllVariants';
 
 export function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState<number | null>();
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [stock, setStock] = useState<'In stock' | 'Out of stock'>();
   const [activeColor, setActiveColor] = useState<string>('');
+  const [activeSize, setActiveSize] = useState<string>('');
+  const [activeMinPrice, setActiveMinPrice] = useState<string>('');
+  const [activeMaxPrice, setActiveMaxPrice] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const { data, isLoading, isError, error } =
     productsHooks.useListProductsSuspense({
+      page: currentPage,
+      size: 9,
       category_id: activeCategory,
       search: searchQuery,
     });
@@ -29,20 +36,29 @@ export function ProductsPage() {
     return [{ id: null, name: 'All' }, ...rawCategories];
   }, [rawCategories]);
 
-  const colors = ['red', 'black', 'white'];
+  const { colors, sizes, priceRange } = useGetAllVariants();
 
   const handleCategoryChange = (categoryId: number | null) => {
     setActiveCategory(categoryId);
   };
 
-  console.log({ isLoading, isError, error, page, size, pages, total });
+  console.log({
+    isLoading,
+    isError,
+    error,
+    page,
+    size,
+    pages,
+    total,
+    activeSize,
+  });
 
   return (
     <div className={styles.wrapper}>
       <aside className={styles.sidebar}>
         <h3 className={styles.filterTitle}>Filters</h3>
         <span className={styles.label}>Size</span>
-        <SizeTabs />
+        <SizeTabs sizes={sizes} onSizeClick={setActiveSize} />
         <Accordion title="Availability">
           <Checkbox
             id={'In stock'}
@@ -73,7 +89,7 @@ export function ProductsPage() {
         </Accordion>
 
         <Accordion title="Colors">
-          {colors.map((color, idx) => (
+          {colors?.map(({ color }, idx) => (
             <Checkbox
               key={idx}
               id={color}
@@ -88,14 +104,18 @@ export function ProductsPage() {
           <div>
             <input
               type="number"
-              placeholder="Min"
+              placeholder={priceRange.min}
               className={styles.smallInput}
+              value={activeMinPrice}
+              onChange={(e) => setActiveMinPrice(e.target.value)}
             />{' '}
             –
             <input
               type="number"
-              placeholder="Max"
+              placeholder={priceRange.max}
               className={styles.smallInput}
+              value={activeMaxPrice}
+              onChange={(e) => setActiveMaxPrice(e.target.value)}
             />
           </div>
         </Accordion>

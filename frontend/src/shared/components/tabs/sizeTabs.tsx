@@ -1,10 +1,18 @@
 import { useState } from 'react';
 import styles from './sizeTabs.module.scss';
 
-const sizes = ['XS', 'S', 'M', 'L', 'XL', '2X'];
+interface SizeTabsProps {
+  sizes: string[];
+  onSizeClick: (size: string) => void;
+}
 
-export const SizeTabs = () => {
-  const [activeSize, setActiveSize] = useState<string>('M');
+export const SizeTabs = ({ sizes, onSizeClick }: SizeTabsProps) => {
+  const [activeSize, setActiveSize] = useState<string>('');
+
+  const handleSizeClick = (size: string) => {
+    setActiveSize(size);
+    onSizeClick(size);
+  };
 
   return (
     <ul className={styles.wrapper}>
@@ -12,7 +20,7 @@ export const SizeTabs = () => {
         <li key={size}>
           <button
             className={`${styles.tab} ${activeSize === size ? styles.active : ''}`}
-            onClick={() => setActiveSize(size)}
+            onClick={() => handleSizeClick(size)}
           >
             {size}
           </button>

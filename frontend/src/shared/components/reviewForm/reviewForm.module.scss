@@ -1,0 +1,57 @@
+.formWrapper {
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid #b3b3b3;
+  border-radius: 15px;
+  padding: 24px;
+  opacity: 0.75;
+  position: relative;
+}
+.photo {
+  width: 60px;
+  height: 60px;
+  background: #696969;
+  border-radius: 50%;
+  float: left;
+  margin-right: 12px;
+}
+.label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 16px;
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    border: 3px solid #696969;
+    border-radius: 25px;
+    padding: 0 20px;
+    margin-top: 8px;
+  }
+  textarea {
+    height: 100px;
+    resize: vertical;
+  }
+}
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.stars {
+  display: flex;
+  gap: 8px;
+  li {
+    cursor: pointer;
+  }
+}
+.submitBtn {
+  background: #f6f6f6;
+  border-radius: 64px;
+  border: none;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
