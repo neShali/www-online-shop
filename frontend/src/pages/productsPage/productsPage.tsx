@@ -8,6 +8,7 @@ import { ProductCard } from '../../shared/components/productCard';
 import styles from './productsPage.module.scss';
 import { Checkbox } from '../../shared/components/checkbox';
 import { useGetAllVariants } from '../../shared/hooks/useGetAllVariants';
+import { Pagination } from '../../shared/components/pagination';
 
 export function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState<number | null>();
@@ -142,11 +143,22 @@ export function ProductsPage() {
             activeCategory={activeCategory}
           />
         </div>
-        <div className={styles.grid}>
-          {products.map((product) => (
-            <ProductCard product={product} key={product.id} />
-          ))}
-        </div>
+        {isLoading && <div>Loading...</div>}
+        {isError && <div>Error</div>}
+        {!isLoading && !isError && (
+          <>
+            <div className={styles.grid}>
+              {products.map((product) => (
+                <ProductCard product={product} key={product.id} />
+              ))}
+            </div>
+            <Pagination
+              page={page}
+              pages={pages}
+              onPageChange={setCurrentPage}
+            />
+          </>
+        )}
       </div>
     </div>
   );

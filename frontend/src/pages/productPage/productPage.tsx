@@ -47,9 +47,6 @@ export function ProductPage() {
               comment={review.comment}
               time={review.created_at}
               rating={review.rating}
-              onLike={() => {
-                /*...*/
-              }}
             />
           ))}
 

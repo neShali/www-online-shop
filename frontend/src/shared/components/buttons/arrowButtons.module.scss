@@ -1,20 +1,6 @@
 .collection {
   &__arrow {
-    &__left {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
-      &:hover {
-        border: 1px black solid;
-      }
-      > svg {
-        fill: none;
-        stroke: #0c0c0c;
-      }
-    }
+    &__left,
     &__right {
       width: 40px;
       height: 40px;
@@ -22,13 +8,24 @@
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
-      &:hover {
-        border: 1px black solid;
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.2s;
+
+      &:hover:not(:disabled) {
+        border-color: #000;
       }
-      > svg {
-        transform: scaleX(-1);
+
+      & > svg {
         fill: none;
         stroke: #0c0c0c;
+      }
+    }
+
+    &__right {
+      > svg {
+        transform: scaleX(-1);
       }
     }
   }

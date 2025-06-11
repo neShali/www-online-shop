@@ -7,7 +7,6 @@ type Props = {
   comment?: string | null;
   time: string;
   rating?: number | null;
-  onLike?: () => void;
 };
 
 export const ReviewItem: React.FC<Props> = ({
@@ -16,7 +15,6 @@ export const ReviewItem: React.FC<Props> = ({
   comment,
   time,
   rating,
-  onLike,
 }) => (
   <div className={styles.review}>
     <div
@@ -26,9 +24,6 @@ export const ReviewItem: React.FC<Props> = ({
     <p className={styles.name}>{name}</p>
     <p className={styles.comment}>{comment}</p>
     <div className={styles.actions}>
-      <button className={styles.likeBtn} onClick={onLike}>
-        Like
-      </button>
       <span className={styles.time}>{time}</span>
     </div>
     <ul className={styles.stars}>
