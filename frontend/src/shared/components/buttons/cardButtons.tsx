@@ -2,21 +2,23 @@ import styles from './cardButtons.module.scss';
 
 type CardButtonProps = {
   text?: string;
-  link?: string;
   size?: 'default' | 'small';
+  onClick?: () => void;
+  disabled?: boolean;
 };
 
 export const CardButton = ({
   text = 'ADD',
-  link = '',
   size = 'default',
+  onClick,
+  disabled,
 }: CardButtonProps) => {
   const className =
     size === 'small' ? styles.main_card__btn__small : styles.main_card__btn;
 
   return (
-    <a href={link} className={className}>
+    <button disabled={disabled} className={className} onClick={onClick}>
       <span>{text}</span>
-    </a>
+    </button>
   );
 };

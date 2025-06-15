@@ -9,7 +9,7 @@ export default function Header() {
           Home
         </Link>
         <Link to={'/products'} className={styles.link}>
-          Collections
+          Products
         </Link>
         <Link to="#" className={styles.link}>
           New

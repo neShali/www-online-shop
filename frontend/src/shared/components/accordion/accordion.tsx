@@ -9,7 +9,7 @@ interface AccordionProps {
 }
 
 export const Accordion: FC<AccordionProps> = ({ title, children }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={styles.section}>

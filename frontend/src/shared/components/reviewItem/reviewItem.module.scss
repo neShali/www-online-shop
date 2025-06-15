@@ -1,0 +1,49 @@
+.review {
+  position: relative;
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid #b3b3b3;
+  border-radius: 15px;
+  padding: 20px;
+  opacity: 0.75;
+  margin-bottom: 24px;
+}
+.photo {
+  width: 60px;
+  height: 60px;
+  background: #696969 center/cover no-repeat;
+  border-radius: 50%;
+  float: left;
+  margin-right: 12px;
+}
+.name {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 8px;
+}
+.comment {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 27px;
+  color: #696969;
+  margin: 8px 0;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  .likeBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .time {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+.stars {
+  display: flex;
+  gap: 4px;
+  .star svg {
+    display: block;
+  }
+}

@@ -3,13 +3,12 @@ import { Route, Routes } from 'react-router';
 import Layout from './shared/components/layout/Layout';
 import HomePage from './pages/homePage';
 import { ProductsPage } from './pages/productsPage';
-import ProductPage from './pages/productPage';
+import { ProductPage } from './pages/productPage';
 import CartPage from './pages/cartPage';
 import CheckoutPage from './pages/checkoutPage';
 import { AuthPage } from './pages/authPage';
 import ProfilePage from './pages/profilePage';
 import './styles/fonts.css';
-import UiPage from './pages/uiPage';
 
 function App() {
   return (
@@ -27,8 +26,6 @@ function App() {
         <Route path="login" element={<AuthPage />} />
         <Route path="register" element={<AuthPage />} />
         <Route path="profile" element={<ProfilePage />} />
-
-        <Route path="ui" element={<UiPage />} />
 
         <Route path="*" element={<div>Страница не найдена</div>} />
       </Route>
