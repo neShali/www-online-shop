@@ -43,8 +43,7 @@ export default defineConfig([
           path: './hooks',
         },
         client: {
-          import: 'client', // как вы зовёте ваш axios
-          from: '../client',
+          importPath: '../../../client',
         },
         group: {
           name: ({ group }) => {

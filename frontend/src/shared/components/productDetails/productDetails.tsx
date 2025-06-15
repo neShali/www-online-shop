@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState, type FC } from 'react';
 import styles from './productDetails.module.scss';
 import { SizeTabs } from '../tabs';
 import { CardButton } from '../buttons';
-import React from 'react';
 
 interface ProductDetailsProps {
   product: Product;

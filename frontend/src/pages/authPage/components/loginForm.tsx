@@ -16,14 +16,14 @@ export const LoginForm: React.FC = () => {
     api?: string;
   }>({});
 
-  const {
-    data,
-    mutate: login,
-    isPending,
-  } = authHooks.useLogin({
+  const { mutate: login, isPending } = authHooks.useLogin({
     mutation: {
-      onSuccess() {
-        if (data?.access_token) saveToken(data.access_token);
+      onSuccess: (response) => {
+        // response тут уже тот объект, который вернул бек: { access_token, token_type }
+        const token = response.access_token;
+        if (token) {
+          saveToken(token);
+        }
         navigate('/');
       },
       onError(error) {
