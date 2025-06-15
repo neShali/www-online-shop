@@ -1,4 +1,4 @@
-import { productsHooks, reviewsHooks } from '../../shared/api';
+import { cartHooks, productsHooks, reviewsHooks } from '../../shared/api';
 import { ProductDetails } from '../../shared/components/productDetails';
 import { ReviewForm } from '../../shared/components/reviewForm';
 import { ReviewItem } from '../../shared/components/reviewItem';
@@ -7,6 +7,8 @@ import { useParams } from 'react-router';
 
 export function ProductPage() {
   const { productId } = useParams();
+
+  const addItemToCart = cartHooks.useAddItemToCart();
 
   const { data: product } = productsHooks.useGetProductSuspense({
     product_id: Number(productId),
@@ -17,6 +19,20 @@ export function ProductPage() {
   });
 
   reviewsHooks.useCreateReview();
+
+  const handleAddToCart = (variant_id: number) => {
+    if (!product || variant_id === undefined) return;
+    addItemToCart.mutate({
+      data: {
+        product_id: product.id,
+        variant_id,
+        quantity: 1,
+      },
+    });
+  };
+
+  const { data } = cartHooks.useGetMyCart();
+  console.log(data);
 
   return (
     <>
@@ -32,7 +48,7 @@ export function ProductPage() {
                 />
               )}
             </div>
-            <ProductDetails product={product} />
+            <ProductDetails product={product} onAdd={handleAddToCart} />
           </div>
         </div>
       </section>

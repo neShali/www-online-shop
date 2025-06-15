@@ -4,19 +4,7 @@
   padding: 66px 39px 25px 37px;
   width: 306px;
 }
-.likeBtn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #fff;
-  border: none;
-  width: 40px;
-  height: 40px;
-  svg {
-    stroke: #000;
-    fill: none;
-  }
-}
+
 .desc {
   .title {
     font-size: 14px;
@@ -49,24 +37,41 @@
 }
 .colorList {
   display: flex;
-  gap: 4px;
-  button {
-    width: 35px;
-    height: 36px;
-    border: none;
+  gap: 5px;
+
+  li {
+    list-style: none;
   }
 }
-.sizeList {
-  display: flex;
-  gap: 4px;
-  button {
-    width: 36px;
-    height: 36px;
-    border: 1px solid #a3a3a3;
-    font-size: 14px;
-    font-weight: 500;
+
+.colorTag {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #a3a3a3;
+  padding: 0;
+  margin: 0;
+  background-clip: padding-box;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #000;
+  }
+
+  .checkIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    pointer-events: none;
   }
 }
+
+.selected {
+  border-color: #000;
+}
+
 .addBtn {
   display: block;
   width: 229px;

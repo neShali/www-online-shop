@@ -1,60 +1,137 @@
 import type { Product } from '../../api';
-import type { FC } from 'react';
+import { useEffect, useMemo, useState, type FC } from 'react';
 
 import styles from './productDetails.module.scss';
 import { SizeTabs } from '../tabs';
+import { CardButton } from '../buttons';
+import React from 'react';
 
 interface ProductDetailsProps {
   product: Product;
-  onAdd?: () => void;
+  onAdd?: (variant_id: number) => void;
 }
 
 export const ProductDetails: FC<ProductDetailsProps> = ({ product, onAdd }) => {
-  const { variants, name, price, description } = product;
+  const { variants = [], name, price, description } = product;
 
-  const uniqueColors = variants?.reduce<
-    { color: string; color_hex?: string }[]
-  >((acc, curr) => {
-    if (!acc.some((item) => item.color === curr.color)) {
-      acc.push({ color: curr.color, color_hex: curr.color_hex ?? undefined });
+  const [activeColor, setActiveColor] = useState<string | null>(null);
+  const [activeSize, setActiveSize] = useState<string | null>(null);
+
+  const uniqueColors = useMemo(() => {
+    const filtered = activeSize
+      ? variants.filter((v) => v.size === activeSize)
+      : variants;
+
+    const map = new Map<string, string | undefined>();
+    for (const v of filtered) {
+      if (typeof v.color === 'string' && !map.has(v.color)) {
+        map.set(v.color, v.color_hex ?? undefined);
+      }
     }
-    return acc;
-  }, []);
+    return Array.from(map.entries()).map(([color, color_hex]) => ({
+      color,
+      color_hex,
+    }));
+  }, [variants, activeSize]);
 
-  const uniqueSizes = [...new Set(variants?.map((item) => item.size))];
+  const uniqueSizes = useMemo(() => {
+    const filtered = activeColor
+      ? variants.filter((v) => v.color === activeColor)
+      : variants;
 
-  const onSizeClick = () => {};
+    return Array.from(new Set(filtered.map((v) => v.size)));
+  }, [variants, activeColor]);
 
+  useEffect(() => {
+    if (activeColor && !uniqueColors.find((c) => c.color === activeColor)) {
+      setActiveColor(uniqueColors[0]?.color ?? null);
+    }
+  }, [uniqueColors, activeColor]);
+
+  useEffect(() => {
+    if (activeSize && !uniqueSizes.includes(activeSize)) {
+      setActiveSize(uniqueSizes[0] ?? null);
+    }
+  }, [uniqueSizes, activeSize]);
+
+  const selectedVariant = useMemo(() => {
+    return variants.find(
+      (v) => v.color === activeColor && v.size === activeSize
+    );
+  }, [variants, activeColor, activeSize]);
+
+  const handleColorClick = (color: string) => {
+    setActiveColor((prev) => (prev === color ? null : color));
+    if (activeSize) setActiveSize(null);
+  };
+
+  const handleSizeClick = (size: string) => {
+    setActiveSize((prev) => (prev === size ? null : size));
+    if (activeColor) setActiveColor(null);
+  };
   return (
     <div className={styles.info}>
-      <button className={styles.likeBtn} aria-label="Like">
-        <svg width="18" height="18">
-          <use href="./icons/main/symbol-defs.svg#icon-heart" />
-        </svg>
-      </button>
       <div className={styles.desc}>
         <p className={styles.title}>{name}</p>
-        <p className={styles.price}>${price}</p>
+        <p className={styles.price}>${price?.toFixed(2)}</p>
         <p className={styles.subtitle}>{description}</p>
       </div>
 
       <div className={styles.colorBlock}>
-        <p>Color</p>
+        <p className={styles.blockTitle}>Color</p>
         <ul className={styles.colorList}>
-          {uniqueColors?.map((variant, i) => (
-            <li key={i}>
-              <button
-                style={{ backgroundColor: variant.color_hex ?? '#ffffff' }}
-              />
-            </li>
-          ))}
+          {uniqueColors.map(({ color, color_hex }) => {
+            const isSelected = color === activeColor;
+            return (
+              <li key={color}>
+                <button
+                  className={`${styles.colorTag} ${
+                    isSelected ? styles.selected : ''
+                  }`}
+                  onClick={() => handleColorClick(color)}
+                  style={{ backgroundColor: color_hex ?? '#fff' }}
+                  aria-label={`Select color ${color}`}
+                  type="button"
+                >
+                  {isSelected && (
+                    <svg
+                      className={styles.checkIcon}
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M20 6L9 17L4 12"
+                        stroke="white"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
-      <SizeTabs sizes={uniqueSizes} onSizeClick={onSizeClick}></SizeTabs>
 
-      <button className={styles.addBtn} onClick={onAdd}>
-        ADD
-      </button>
+      <div className={styles.sizeBlock}>
+        <p className={styles.blockTitle}>Size</p>
+        <SizeTabs sizes={uniqueSizes} onSizeClick={handleSizeClick} />
+      </div>
+
+      <CardButton
+        text="ADD"
+        size="small"
+        onClick={() => {
+          if (selectedVariant && onAdd) {
+            onAdd(selectedVariant.id);
+          }
+        }}
+        disabled={!selectedVariant}
+      />
     </div>
   );
 };

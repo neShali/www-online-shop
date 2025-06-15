@@ -4,21 +4,27 @@ import { Input } from '../../../shared/components/input';
 import { authHooks } from '../../../shared/api';
 
 import styles from './form.module.scss';
+import { saveToken } from '../../../shared/api/auth';
 
 export const LoginForm: React.FC = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{
-    email?: string;
+    username?: string;
     password?: string;
     api?: string;
   }>({});
 
-  const { mutate: login, isPending } = authHooks.useLogin({
+  const {
+    data,
+    mutate: login,
+    isPending,
+  } = authHooks.useLogin({
     mutation: {
       onSuccess() {
-        navigate('/dashboard');
+        if (data?.access_token) saveToken(data.access_token);
+        navigate('/');
       },
       onError(error) {
         setErrors((prev) => ({
@@ -32,27 +38,25 @@ export const LoginForm: React.FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const newErrors: typeof errors = {};
-    if (!email) newErrors.email = 'Email is required';
-    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))
-      newErrors.email = 'Invalid email';
+    if (!username) newErrors.username = 'Username is required';
     if (!password) newErrors.password = 'Password is required';
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
 
-    login({ data: { username: email, password } });
+    login({ data: { username, password } });
   };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       <Input
-        type="email"
-        placeholder="Email"
-        value={email}
+        type="username"
+        placeholder="username"
+        value={username}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setEmail(e.target.value)
+          setUsername(e.target.value)
         }
       />
-      {errors.email && <div className={styles.error}>{errors.email}</div>}
+      {errors.username && <div className={styles.error}>{errors.username}</div>}
 
       <Input
         type="password"

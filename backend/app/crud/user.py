@@ -60,7 +60,7 @@ class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
         self, db: Session, *, username: str, password: str
     ) -> Optional[User]:
         """
-        Authenticate a user by email and password
+        Authenticate a user by username and password
         """
         user = self.get_by_username(db, username=username)
         if not user:

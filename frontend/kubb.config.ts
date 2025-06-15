@@ -16,7 +16,7 @@ export default defineConfig([
       extension: {
         '.ts': '',
       },
-      path: `./src/shared/api/`,
+      path: `./src/shared/api/generated`,
     },
 
     plugins: [
@@ -43,9 +43,8 @@ export default defineConfig([
           path: './hooks',
         },
         client: {
-          // importPath: '../../../client',
-          // dataReturnType: 'data',
-          baseURL: 'http://localhost:8000',
+          import: 'client', // как вы зовёте ваш axios
+          from: '../client',
         },
         group: {
           name: ({ group }) => {

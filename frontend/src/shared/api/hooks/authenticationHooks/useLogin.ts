@@ -28,6 +28,8 @@ export async function login(
 ) {
   const { client: request = client, ...requestConfig } = config;
 
+  console.log({ data });
+
   const res = await request<
     LoginMutationResponse,
     ResponseErrorConfig<Login422>,

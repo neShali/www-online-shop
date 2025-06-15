@@ -68,7 +68,10 @@ def login(
     if not authenticated_user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username or password",
+             detail=(
+            f"Incorrect username or password: "
+            f"username={form_data.username!r}, password={form_data.password!r}"
+        ),
             headers={"WWW-Authenticate": "Bearer"},
         )
 
