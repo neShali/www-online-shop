@@ -42,8 +42,8 @@ class CartItemInDBBase(CartItemBase):
 
 
 class CartItem(CartItemInDBBase):
-    variant_size: str
-    variant_color: str
+    variant_size: str | None = None  
+    variant_color: str | None = None
 
 
 # Cart schemas

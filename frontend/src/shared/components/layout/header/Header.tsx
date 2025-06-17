@@ -1,7 +1,12 @@
 import { Link } from 'react-router';
 import styles from './header.module.scss';
+import { cartHooks } from '../../../api';
 
 export default function Header() {
+  const { data } = cartHooks.useGetMyCart();
+
+  const cartCount = data?.items?.length || 0;
+
   return (
     <header className={styles.header}>
       <nav className={styles.links}>
@@ -28,10 +33,11 @@ export default function Header() {
             <use xlinkHref="symbol-defs.svg#icon-heart" />
           </svg>
         </Link>
-        <Link className={styles.btn} to="/cart">
+        <Link className={`${styles.btn} ${styles.btnCart}`} to="/cart">
           <svg width="22" height="22">
             <use xlinkHref="symbol-defs.svg#icon-bag" />
           </svg>
+          {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
         </Link>
         <Link className={styles.btn} to="/login">
           <svg width="17" height="17">

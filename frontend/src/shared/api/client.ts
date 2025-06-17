@@ -55,7 +55,16 @@ let pendingRequests: Array<() => void> = [];
 raw.interceptors.response.use(
   (res) => res,
   async (error) => {
-    const { response, config } = error;
+    const { response, config } = error as { response: any; config: any };
+
+    if (
+      config.url?.includes('/api/v1/auth/login') ||
+      config.url?.includes('/api/v1/auth/register') ||
+      config.url?.includes('/api/v1/auth/refresh-token')
+    ) {
+      return Promise.reject(error);
+    }
+
     if (response?.status === 401 && !config._retry) {
       config._retry = true;
 
@@ -69,7 +78,7 @@ raw.interceptors.response.use(
           pendingRequests.forEach((cb) => cb());
         } catch (e) {
           clearToken();
-          window.location.href = '/login';
+          return Promise.reject(e);
         } finally {
           isRefreshing = false;
           pendingRequests = [];
@@ -82,6 +91,7 @@ raw.interceptors.response.use(
         });
       });
     }
+
     return Promise.reject(error);
   }
 );

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { categoriesHooks, productsHooks } from '../../shared/api';
 import { Accordion } from '../../shared/components/accordion';
 import { SearchInput } from '../../shared/components/searchInput';
@@ -16,19 +16,25 @@ export function ProductsPage() {
   const [stock, setStock] = useState<'In stock' | 'Out of stock'>();
   const [activeColor, setActiveColor] = useState<string>('');
   const [activeSize, setActiveSize] = useState<string>('');
-  const [activeMinPrice, setActiveMinPrice] = useState<string>('');
-  const [activeMaxPrice, setActiveMaxPrice] = useState<string>('');
+  const [activeMinPrice, setActiveMinPrice] = useState<number>();
+  const [activeMaxPrice, setActiveMaxPrice] = useState<number>();
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [errorText, setErrorText] = useState<string>('');
 
-  const { data, isLoading, isError, error } =
-    productsHooks.useListProductsSuspense({
-      page: currentPage,
-      size: 9,
-      category_id: activeCategory,
-      search: searchQuery,
-    });
+  const { data, isLoading, isError, error } = productsHooks.useListProducts({
+    page: currentPage,
+    size: 9,
+    category_id: activeCategory,
+    search: searchQuery,
+    min_price: activeMinPrice,
+    max_price: activeMaxPrice,
+  });
 
-  const { items: products, page, size, pages, total } = data;
+  const {
+    items: products,
+    page,
+    pages,
+  } = data ?? { items: [], page: 1, size: 9, pages: 1, total: 0 };
 
   const { data: rawCategories } = categoriesHooks.useListCategories();
 
@@ -39,27 +45,26 @@ export function ProductsPage() {
 
   const { colors, sizes, priceRange } = useGetAllVariants();
 
+  useEffect(() => {
+    if (isError && error) {
+      setErrorText(error.message);
+    }
+  }, []);
+
   const handleCategoryChange = (categoryId: number | null) => {
     setActiveCategory(categoryId);
   };
-
-  console.log({
-    isLoading,
-    isError,
-    error,
-    page,
-    size,
-    pages,
-    total,
-    activeSize,
-  });
 
   return (
     <div className={styles.wrapper}>
       <aside className={styles.sidebar}>
         <h3 className={styles.filterTitle}>Filters</h3>
         <span className={styles.label}>Size</span>
-        <SizeTabs sizes={sizes} onSizeClick={setActiveSize} />
+        <SizeTabs
+          activeSize={activeSize}
+          sizes={sizes}
+          onSizeClick={setActiveSize}
+        />
         <Accordion title="Availability">
           <Checkbox
             id={'In stock'}
@@ -81,7 +86,7 @@ export function ProductsPage() {
                 <Checkbox
                   key={category.id}
                   id={String(category.id)}
-                  label={category.name}
+                  label={category.description || category.name}
                   checked={activeCategory === category.id}
                   onChange={() => setActiveCategory(category.id)}
                 />
@@ -108,7 +113,7 @@ export function ProductsPage() {
               placeholder={priceRange.min}
               className={styles.smallInput}
               value={activeMinPrice}
-              onChange={(e) => setActiveMinPrice(e.target.value)}
+              onChange={(e) => setActiveMinPrice(+e.target.value)}
             />{' '}
             –
             <input
@@ -116,7 +121,7 @@ export function ProductsPage() {
               placeholder={priceRange.max}
               className={styles.smallInput}
               value={activeMaxPrice}
-              onChange={(e) => setActiveMaxPrice(e.target.value)}
+              onChange={(e) => setActiveMaxPrice(+e.target.value)}
             />
           </div>
         </Accordion>
@@ -144,7 +149,7 @@ export function ProductsPage() {
           />
         </div>
         {isLoading && <div>Loading...</div>}
-        {isError && <div>Error</div>}
+        {isError && !isLoading && <div>{errorText}</div>}
         {!isLoading && !isError && (
           <>
             <div className={styles.grid}>

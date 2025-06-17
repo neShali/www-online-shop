@@ -1,6 +1,7 @@
 from sqlalchemy import Boolean, Column, DateTime, Float, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
+from sqlalchemy.ext.hybrid import hybrid_property
 
 from app.db.base import Base
 
@@ -37,3 +38,11 @@ class CartItem(Base):
     cart = relationship("Cart", back_populates="items")
     product = relationship("Product", back_populates="cart_items")
     variant = relationship("ProductVariant", back_populates="cart_items")
+
+    @hybrid_property
+    def variant_size(self) -> str | None:
+        return self.variant.size if self.variant else None
+   
+    @hybrid_property
+    def variant_color(self) -> str | None:
+        return self.variant.color if self.variant else None
