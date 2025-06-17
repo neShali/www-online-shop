@@ -19,7 +19,6 @@ export const LoginForm: React.FC = () => {
   const { mutate: login, isPending } = authHooks.useLogin({
     mutation: {
       onSuccess: (response) => {
-        // response тут уже тот объект, который вернул бек: { access_token, token_type }
         const token = response.access_token;
         if (token) {
           saveToken(token);
@@ -29,7 +28,13 @@ export const LoginForm: React.FC = () => {
       onError(error) {
         setErrors((prev) => ({
           ...prev,
-          api: error.message || 'Login failed',
+          api: Array.isArray(error.response?.data.detail)
+            ? error.response.data.detail
+                .map((d) => d.msg || JSON.stringify(d))
+                .join(', ')
+            : typeof error.response?.data.detail === 'string'
+              ? (error.response.data.detail as string).split(':')[0]
+              : 'Login failed',
         }));
       },
     },
@@ -61,6 +66,7 @@ export const LoginForm: React.FC = () => {
       <Input
         type="password"
         placeholder="Password"
+        autoComplete="new-password"
         value={password}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           setPassword(e.target.value)

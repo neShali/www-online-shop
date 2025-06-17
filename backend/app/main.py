@@ -2,7 +2,7 @@ from typing import Iterator
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.routing import APIRoute         # ← новый импорт
+from fastapi.routing import APIRoute    
 
 from alembic import command
 from alembic.config import Config
@@ -10,11 +10,6 @@ from app.api.routes import auth, carts, categories, products, promos, reviews
 from app.core.config import settings
 
 def custom_uid(route: APIRoute) -> str:
-    """
-    Генерация короткого operationId.
-    По умолчанию берём имя функции-обработчика.
-    Если имён-дубликатов не будет — этого достаточно.
-    """
     return route.name           
 
 # Create FastAPI app

@@ -9,8 +9,10 @@ import CheckoutPage from './pages/checkoutPage';
 import { AuthPage } from './pages/authPage';
 import ProfilePage from './pages/profilePage';
 import './styles/fonts.css';
+import { useScrollToTop } from './shared/hooks/useScrollToTop';
 
 function App() {
+  useScrollToTop();
   return (
     <Routes>
       <Route element={<Layout />}>

@@ -6,12 +6,12 @@ import { SizeTabs } from '../tabs';
 import { CardButton } from '../buttons';
 
 interface ProductDetailsProps {
-  product: Product;
+  product?: Product;
   onAdd?: (variant_id: number) => void;
 }
 
 export const ProductDetails: FC<ProductDetailsProps> = ({ product, onAdd }) => {
-  const { variants = [], name, price, description } = product;
+  const { variants = [], name, price, description } = product || {};
 
   const [activeColor, setActiveColor] = useState<string | null>(null);
   const [activeSize, setActiveSize] = useState<string | null>(null);
@@ -53,21 +53,22 @@ export const ProductDetails: FC<ProductDetailsProps> = ({ product, onAdd }) => {
     }
   }, [uniqueSizes, activeSize]);
 
+  const handleColorClick = (color: string) => {
+    setActiveColor((prev) => (prev === color ? null : color));
+  };
+
+  const handleSizeClick = (size: string) => {
+    setActiveSize((prev) => (prev === size ? null : size));
+  };
+
   const selectedVariant = useMemo(() => {
     return variants.find(
       (v) => v.color === activeColor && v.size === activeSize
     );
   }, [variants, activeColor, activeSize]);
 
-  const handleColorClick = (color: string) => {
-    setActiveColor((prev) => (prev === color ? null : color));
-    if (activeSize) setActiveSize(null);
-  };
+  console.log({ selectedVariant, activeColor, activeSize });
 
-  const handleSizeClick = (size: string) => {
-    setActiveSize((prev) => (prev === size ? null : size));
-    if (activeColor) setActiveColor(null);
-  };
   return (
     <div className={styles.info}>
       <div className={styles.desc}>
@@ -118,7 +119,11 @@ export const ProductDetails: FC<ProductDetailsProps> = ({ product, onAdd }) => {
 
       <div className={styles.sizeBlock}>
         <p className={styles.blockTitle}>Size</p>
-        <SizeTabs sizes={uniqueSizes} onSizeClick={handleSizeClick} />
+        <SizeTabs
+          activeSize={activeSize}
+          sizes={uniqueSizes}
+          onSizeClick={handleSizeClick}
+        />
       </div>
 
       <CardButton
