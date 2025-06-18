@@ -1,57 +1,47 @@
 .formWrapper {
   background: rgba(0, 0, 0, 0.1);
   border: 2px solid #b3b3b3;
-  border-radius: 15px;
-  padding: 24px;
+  padding: 20px;
   opacity: 0.75;
   position: relative;
+  max-width: 800px;
+  width: 100%;
 }
-.photo {
-  width: 60px;
-  height: 60px;
-  background: #696969;
-  border-radius: 50%;
-  float: left;
-  margin-right: 12px;
-}
+
 .label {
   display: block;
   font-weight: 500;
   margin-bottom: 16px;
-  input,
   textarea {
-    display: block;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
     width: 100%;
-    border: 3px solid #696969;
-    border-radius: 25px;
-    padding: 0 20px;
-    margin-top: 8px;
-  }
-  textarea {
-    height: 100px;
-    resize: vertical;
+    font-size: 1rem;
+    color: #333;
+
+    &::placeholder {
+      color: #888;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #514f4f;
+      box-shadow: 0 0 2px 2px rgba(49, 57, 63, 0.3);
+    }
   }
 }
 .bottomRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-top: 16px;
+  gap: 10px;
 }
-.stars {
-  display: flex;
-  gap: 8px;
-  li {
-    cursor: pointer;
-  }
+
+.buttonWrapper {
+  margin-left: auto;
 }
-.submitBtn {
-  background: #f6f6f6;
-  border-radius: 64px;
-  border: none;
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
+
+.error {
+  color: tomato;
 }

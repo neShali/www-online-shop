@@ -1,0 +1,23 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 416px;
+  height: 49px;
+  background: #d9d9d9;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 500;
+  box-sizing: border-box;
+  cursor: pointer;
+  &:hover:not(.disabled) {
+    border: 1px black solid;
+  }
+  &__small {
+    width: 229px;
+    height: 40px;
+  }
+}
+.disabled {
+  cursor: auto;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Pagination.module.scss';
-import { ArrowButton } from '../buttons/arrowButtons';
+import { ArrowButton } from '../buttons/arrowButton';
 
 export type PaginationProps = {
   page: number;

@@ -5,7 +5,8 @@ import { cartHooks } from '../../../api';
 export default function Header() {
   const { data } = cartHooks.useGetMyCart();
 
-  const cartCount = data?.items?.length || 0;
+  const cartCount =
+    data?.items?.reduce((acc, item) => acc + (item.quantity ?? 1), 0) || 0;
 
   return (
     <header className={styles.header}>
@@ -16,9 +17,6 @@ export default function Header() {
         <Link to={'/products'} className={styles.link}>
           Products
         </Link>
-        <Link to="#" className={styles.link}>
-          New
-        </Link>
       </nav>
 
       <Link to="/" className="logo">
@@ -28,11 +26,6 @@ export default function Header() {
       </Link>
 
       <nav className={styles.btns}>
-        <Link to="/favorites" className={styles.btn}>
-          <svg width="22" height="22">
-            <use xlinkHref="symbol-defs.svg#icon-heart" />
-          </svg>
-        </Link>
         <Link className={`${styles.btn} ${styles.btnCart}`} to="/cart">
           <svg width="22" height="22">
             <use xlinkHref="symbol-defs.svg#icon-bag" />

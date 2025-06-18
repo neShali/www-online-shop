@@ -67,8 +67,6 @@ export const ProductDetails: FC<ProductDetailsProps> = ({ product, onAdd }) => {
     );
   }, [variants, activeColor, activeSize]);
 
-  console.log({ selectedVariant, activeColor, activeSize });
-
   return (
     <div className={styles.info}>
       <div className={styles.desc}>

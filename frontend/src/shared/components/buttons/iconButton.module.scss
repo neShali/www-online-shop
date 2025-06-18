@@ -1,0 +1,19 @@
+.btn {
+  display: block;
+  border: solid 1px black;
+  background: rgba(220, 220, 220, 0.44);
+
+  height: 34px;
+  width: 34px;
+  &:hover:not(.disabled) {
+    border: 2px black solid;
+    background: rgba(166, 165, 165, 0.44);
+  }
+  > svg {
+    fill: none;
+    stroke: #0c0c0c;
+  }
+}
+.disabled {
+  background: rgba(251, 250, 250, 0.44);
+}

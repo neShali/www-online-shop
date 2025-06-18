@@ -7,7 +7,9 @@ from app.core.dependencies import get_current_user
 from app.crud.cart import cart
 from app.crud.product import product
 from app.db.session import get_db
-from app.schemas.cart import Cart, CartItem, CartItemCreate, CartItemUpdate
+from app.models.product import ProductVariant
+from app.schemas.cart import Cart, CartItem as CartItemSchema, CartItemCreate, CartItemUpdate
+from app.models.cart import CartItem 
 from app.schemas.user import User
 
 router = APIRouter()
@@ -30,7 +32,7 @@ def get_my_cart(
     return user_cart
 
 
-@router.post("/items", response_model=CartItem)
+@router.post("/items", response_model=CartItemSchema)
 def add_item_to_cart(
     *,
     db: Session = Depends(get_db),
@@ -72,7 +74,7 @@ def add_item_to_cart(
     )
 
 
-@router.put("/items/{item_id}", response_model=CartItem)
+@router.put("/items/{item_id}", response_model=CartItemSchema)
 def update_cart_item(
     *,
     db: Session = Depends(get_db),
@@ -101,19 +103,29 @@ def update_cart_item(
 
     # Check product stock if increasing quantity
     if item_in.quantity and item_in.quantity > cart_item.quantity:
-        prod = product.get(db, id=cart_item.product_id)
+        variant = (
+            db.query(ProductVariant)
+            .filter(ProductVariant.id == cart_item.variant_id)
+            .first()
+        )
+        if variant is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Variant not found",
+            )
+
         additional_qty = item_in.quantity - cart_item.quantity
-        if prod.stock < additional_qty:
+        if variant.stock < additional_qty:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"Not enough stock. Available: {prod.stock}",
+                detail=f"Not enough stock. Available: {variant.stock}",
             )
 
     # Update the cart item
     return cart.update_cart_item(db, item_id=item_id, item_in=item_in)
 
 
-@router.delete("/items/{item_id}", response_model=CartItem)
+@router.delete("/items/{item_id}", response_model=CartItemSchema)
 def remove_cart_item(
     *,
     db: Session = Depends(get_db),

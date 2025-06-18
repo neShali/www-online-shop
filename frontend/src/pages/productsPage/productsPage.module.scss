@@ -31,6 +31,8 @@
   display: flex;
   flex-direction: column;
   margin-top: 58px;
+  overflow: auto;
+  scrollbar-gutter: stable;
 }
 
 .breadcrumb {
@@ -69,4 +71,10 @@
 .main::after {
   content: '';
   flex: 1;
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

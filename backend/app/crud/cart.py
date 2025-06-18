@@ -7,6 +7,7 @@ from app.models.cart import Cart, CartItem
 from app.models.product import Product, ProductVariant
 from app.schemas.cart import CartCreate
 from app.schemas.cart import CartItem as CartItemSchema
+from app.models.cart import CartItem   
 from app.schemas.cart import CartItemCreate, CartItemUpdate, CartUpdate
 
 
@@ -107,34 +108,16 @@ class CRUDCart(CRUDBase[Cart, CartCreate, CartUpdate]):
             .filter(ProductVariant.id == item.variant_id)
             .first()
         )
-        if variant:
-            item.variant_size = variant.size
-            item.variant_color = variant.color
 
-        item_dict = {
-            "id": item.id,
-            "cart_id": item.cart_id,
-            "product_id": item.product_id,
-            "variant_id": item.variant_id,
-            "quantity": item.quantity,
-            "unit_price": item.unit_price,
-            "created_at": item.created_at,
-            "updated_at": item.updated_at,
-            "variant_size": variant.size if variant else "",
-            "variant_color": variant.color if variant else "",
-        }
+        return CartItemSchema.model_validate(item, from_attributes=True)
 
-        return CartItemSchema(**item_dict)
-
-    def remove_cart_item(self, db: Session, *, item_id: int) -> Dict[str, Any]:
+    def remove_cart_item(self, db: Session, *, item_id: int) -> CartItemSchema | None:
         item = db.query(CartItem).filter(CartItem.id == item_id).first()
         if not item:
             return None
-
-        item_info = {"id": item.id, "product_id": item.product_id}
         db.delete(item)
         db.commit()
-        return item_info
+        return CartItemSchema.model_validate(item, from_attributes=True)
 
     def clear_cart(self, db: Session, *, cart_id: int) -> None:
         """Remove all items from a cart"""

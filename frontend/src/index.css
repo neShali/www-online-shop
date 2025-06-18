@@ -9,6 +9,8 @@
 }
 body {
   margin: 0;
+  scrollbar-gutter: auto;
+  overflow: auto;
 }
 
 a {
@@ -38,6 +40,7 @@ button {
 }
 
 input,
+textarea,
 button {
   font-family: inherit;
 }

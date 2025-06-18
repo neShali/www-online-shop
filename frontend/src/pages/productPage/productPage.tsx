@@ -1,3 +1,4 @@
+import { useCallback, useState } from 'react';
 import { queryClient } from '../../queryClient';
 import { cartHooks, productsHooks, reviewsHooks } from '../../shared/api';
 import { ProductDetails } from '../../shared/components/productDetails';
@@ -8,8 +9,9 @@ import { useParams } from 'react-router';
 
 export function ProductPage() {
   const { productId } = useParams();
+  const [reviewError, setReviewError] = useState('');
 
-  const addItemToCart = cartHooks.useAddItemToCart({
+  const { mutate: addItemToCart } = cartHooks.useAddItemToCart({
     mutation: {
       onSuccess() {
         queryClient.invalidateQueries({
@@ -26,57 +28,85 @@ export function ProductPage() {
     product_id: Number(productId),
   });
 
-  const { data: reviews } = reviewsHooks.useListProductReviews({
+  const {
+    data: reviews = [],
+    refetch: refetchReviews,
+    isLoading: reviewsLoading,
+  } = reviewsHooks.useListProductReviews({
     product_id: Number(productId),
   });
 
-  reviewsHooks.useCreateReview();
-
-  const handleAddToCart = (variant_id: number) => {
-    if (!product || variant_id === undefined) return;
-    addItemToCart.mutate({
-      data: {
-        product_id: product.id,
-        variant_id,
-        quantity: 1,
+  const { mutate: addReview } = reviewsHooks.useCreateReview({
+    mutation: {
+      onSuccess() {
+        refetchReviews();
       },
-    });
-  };
+      onError(error) {
+        const detail = error.response?.data.detail;
+        if (Array.isArray(detail)) {
+          setReviewError(detail.map((d) => d.msg || String(d)).join(', '));
+        } else if (typeof detail === 'string') {
+          setReviewError(detail);
+        } else {
+          setReviewError('An unknown error occurred.');
+        }
+      },
+    },
+  });
+
+  const handleAddToCart = useCallback(
+    (variant_id: number) => {
+      if (!product || variant_id === undefined) return;
+      addItemToCart({
+        data: {
+          product_id: product.id,
+          variant_id,
+          quantity: 1,
+        },
+      });
+    },
+    [addItemToCart, product]
+  );
+
+  const handleAddReview = useCallback(
+    (text: string, rating: number) => {
+      addReview({
+        data: { product_id: Number(productId), comment: text, rating },
+      });
+    },
+    [addReview, productId]
+  );
 
   return (
     <>
       <section className={styles.mainCard}>
-        <div className="container">
-          <div className={styles.content}>
-            <div className={styles.gallery}>
-              {product?.image_url && (
-                <img
-                  src={product.image_url}
-                  alt="Product"
-                  className={styles.mainImg}
-                />
-              )}
-            </div>
-            <ProductDetails product={product} onAdd={handleAddToCart} />
-          </div>
+        <div className={styles.content}>
+          {product?.image_url && (
+            <img
+              src={product.image_url}
+              alt="Product"
+              className={styles.mainImg}
+            />
+          )}
+          <ProductDetails product={product} onAdd={handleAddToCart} />
         </div>
       </section>
 
-      <section className="reviews">
-        <div className="container">
-          <h2>Description | Reviews</h2>
-          {reviews?.map((review) => (
+      <section className={styles.reviews}>
+        <h2 className={styles.reviewTitle}>Reviews</h2>
+        {reviewsLoading && <p>Loading reviews…</p>}
+        {!reviewsLoading &&
+          reviews?.map((review) => (
             <ReviewItem
               key={review.id}
-              name={'nn'}
+              name={review.user_id}
               comment={review.comment}
               time={review.created_at}
               rating={review.rating}
             />
           ))}
 
-          <ReviewForm />
-        </div>
+        <ReviewForm onSubmit={handleAddReview} error={reviewError} />
       </section>
     </>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './arrowButtons.module.scss';
+import styles from './arrowButton.module.scss';
 
 export type ArrowButtonProps = {
   direction: 'left' | 'right';

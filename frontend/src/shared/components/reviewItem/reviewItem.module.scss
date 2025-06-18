@@ -2,10 +2,11 @@
   position: relative;
   background: rgba(0, 0, 0, 0.1);
   border: 2px solid #b3b3b3;
-  border-radius: 15px;
   padding: 20px;
   opacity: 0.75;
   margin-bottom: 24px;
+  max-width: 800px;
+  width: 100%;
 }
 .photo {
   width: 60px;
@@ -15,6 +16,10 @@
   float: left;
   margin-right: 12px;
 }
+.topBlock {
+  display: flex;
+}
+
 .name {
   font-size: 16px;
   font-weight: 400;
@@ -27,23 +32,12 @@
   color: #696969;
   margin: 8px 0;
 }
-.actions {
-  display: flex;
-  gap: 8px;
-  .likeBtn {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  .time {
-    font-size: 16px;
-    font-weight: 500;
-  }
+.time {
+  display: block;
+  margin-top: 20px;
+  font-size: 10px;
+  font-weight: 500;
 }
-.stars {
-  display: flex;
-  gap: 4px;
-  .star svg {
-    display: block;
-  }
+.ratingWrapper {
+  margin-left: auto;
 }

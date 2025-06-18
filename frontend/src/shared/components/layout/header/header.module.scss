@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
-  width: 1280px;
+  max-width: 1280px;
 }
 
 .links,
@@ -14,6 +14,15 @@
   min-width: min-content;
   justify-content: space-between;
   width: 100%;
+  gap: 50px;
+}
+
+.links {
+  justify-content: flex-start;
+}
+
+.btns {
+  justify-content: flex-end;
 }
 
 .link {
