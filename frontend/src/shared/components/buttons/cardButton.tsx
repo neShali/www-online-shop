@@ -1,4 +1,4 @@
-import styles from './cardButtons.module.scss';
+import styles from './cardButton.module.scss';
 
 type CardButtonProps = {
   text?: string;
@@ -13,11 +13,14 @@ export const CardButton = ({
   onClick,
   disabled,
 }: CardButtonProps) => {
-  const className =
-    size === 'small' ? styles.main_card__btn__small : styles.main_card__btn;
+  const className = size === 'small' ? styles.btn__small : styles.btn;
 
   return (
-    <button disabled={disabled} className={className} onClick={onClick}>
+    <button
+      disabled={disabled}
+      className={`${className} ${disabled ? styles.disabled : ''}`}
+      onClick={onClick}
+    >
       <span>{text}</span>
     </button>
   );

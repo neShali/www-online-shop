@@ -64,19 +64,22 @@
 .titleAndPriceWrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .title {
+  flex: 1 1 0;
+  min-width: 0;
   font-size: 14px;
   font-weight: 500;
-  color: #222;
-  flex: 1;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .price {
+  flex-shrink: 0;
   font-size: 14px;
   font-weight: 700;
-  color: #000;
   text-align: right;
 }

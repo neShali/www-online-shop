@@ -8,14 +8,9 @@
   justify-content: center;
 }
 
-.gallery {
-  display: flex;
-  gap: 40px;
-  margin-top: 30px;
-}
 .mainImg {
-  width: 367px;
-  height: 438px;
+  height: 530px;
+  aspect-ratio: 9 /16;
   object-fit: cover;
 }
 .list {
@@ -26,15 +21,12 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.thumbBtn {
-  border: none;
-  padding: 0;
-  background: none;
-  img {
-    width: 62px;
-    height: 75px;
-    object-fit: cover;
-    opacity: 0.44;
-    border: 1px solid #d9d9d9;
-  }
+.reviewTitle {
+  margin-bottom: 15px;
+}
+.reviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,4 +1,4 @@
-import styles from './productButtons.module.scss';
+import styles from './productButton.module.scss';
 
 type ProductsButtonProps = {
   text?: string;

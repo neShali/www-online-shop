@@ -55,6 +55,8 @@ export function ProductsPage() {
     setActiveCategory(categoryId);
   };
 
+  const emptyProducts = products.length === 0 && !isLoading && !isError;
+
   return (
     <div className={styles.wrapper}>
       <aside className={styles.sidebar}>
@@ -148,9 +150,14 @@ export function ProductsPage() {
             activeCategory={activeCategory}
           />
         </div>
-        {isLoading && <div>Loading...</div>}
-        {isError && !isLoading && <div>{errorText}</div>}
-        {!isLoading && !isError && (
+        {isLoading && <div className={styles.message}>Loading...</div>}
+        {isError && !isLoading && (
+          <div className={styles.message}>{errorText}</div>
+        )}
+        {emptyProducts && (
+          <div className={styles.message}>Try another category</div>
+        )}
+        {!isLoading && !isError && !emptyProducts && (
           <>
             <div className={styles.grid}>
               {products.map((product) => (

@@ -49,15 +49,15 @@ INSERT INTO products (id, name, description, price, is_active, category_id, imag
 (1, 'Classic Cotton T-Shirt', 'Soft and comfortable basic t-shirt for everyday wear', 24.99, true, 4, 'https://image.hm.com/assets/hm/cc/2c/cc2cc240f12a058b64f004fc142f252e3c73f860.jpg?imwidth=1536'),
 (2, 'Oxford Button-Down Shirt', 'Crisp and clean button-down shirt for casual or formal occasions', 59.99, true, 4, 'https://image.hm.com/assets/hm/d5/12/d512544cab2554973536f2d31fc092edf3f4d10e.jpg?imwidth=1536'),
 (3, 'Casual Polo Shirt', 'Breathable polo shirt with subtle logo detailing', 39.99, true, 4, 'https://image.hm.com/assets/hm/73/09/73091f235b4f6690c9ee227664dd937c8f253c08.jpg?imwidth=1536'),
-(23, 'Classic Cotton Shirt (Men)', 'A timeless shirt made from 100% cotton with a regular fit.', 39.99, true, 4, 'https://image.hm.com/assets/hm/61/8c/618c8e2329f651d6c2b1d411155655ef135db618.jpg?imwidth=2160'),
-(24, 'Casual Polo Shirt (Men)', 'Soft polo shirt with classic collar and short sleeves.', 24.99, true, 4, 'https://image.hm.com/assets/hm/4a/e8/4ae804c910cd4ef85d0dcc4854301f4420d5aea1.jpg?imwidth=2160'),
+(23, 'Classic Cotton Shirt', 'A timeless shirt made from 100% cotton with a regular fit.', 39.99, true, 4, 'https://image.hm.com/assets/hm/61/8c/618c8e2329f651d6c2b1d411155655ef135db618.jpg?imwidth=2160'),
+(24, 'Casual Polo Shirt', 'Soft polo shirt with classic collar and short sleeves.', 24.99, true, 4, 'https://image.hm.com/assets/hm/4a/e8/4ae804c910cd4ef85d0dcc4854301f4420d5aea1.jpg?imwidth=2160'),
 
 
 -- Men's Bottoms
 (4, 'Slim Fit Jeans', 'Modern slim fit jeans with slight stretch for comfort', 69.99, true, 5, 'https://image.hm.com/assets/hm/e6/64/e664e8305e33d7437bd792442789225a0d580bc3.jpg?imwidth=1536'),
 (5, 'Chino Trousers', 'Versatile chino trousers suitable for work and weekends', 49.99, true, 5, 'https://image.hm.com/assets/hm/bb/b4/bbb4cfa3dffe0fe61efb811dbc37b93283cfff22.jpg?imwidth=1536'),
 (6, 'Athletic Shorts', 'Lightweight running shorts with moisture-wicking technology', 34.99, true, 5, 'https://image.hm.com/assets/hm/47/6b/476b80e4f636a6fb889c1e4e1c4e93b4784def90.jpg?imwidth=1536'),
-(11, 'Linen‑Blend Pull‑on Trousers', 'Linen trousers with an elastic waistband, comfortable and stylish.', 34.99, true, 5, 'https://image.hm.com/assets/hm/d9/11/d911baf2dc0e7f13bfd8e8118abf46fd3385c89b.jpg?imwidth=1260'),
+(11, 'LinenBlend Pullon Trousers', 'Linen trousers with an elastic waistband, comfortable and stylish.', 34.99, true, 5, 'https://image.hm.com/assets/hm/d9/11/d911baf2dc0e7f13bfd8e8118abf46fd3385c89b.jpg?imwidth=1260'),
 
 -- Men's outwear
 (38, 'Classic Wool Coat', 'Tailored wool coat with button closure and side pockets.', 89.99, true, 6, 'https://image.hm.com/assets/hm/77/43/7743e913ec71502cac698dc21d9f5a8a336bab60.jpg?imwidth=2160'),
@@ -69,9 +69,9 @@ INSERT INTO products (id, name, description, price, is_active, category_id, imag
 -- Women's Tops
 (7, 'V-Neck Blouse', 'Elegant V-neck blouse with slight drape', 44.99, true, 7, 'https://image.hm.com/assets/hm/20/24/2024bf909c3cfbd94df7851f037c9bcd2142865e.jpg?imwidth=1536'),
 (8, 'Fitted Turtleneck', 'Soft and stretchy turtleneck for layering', 29.99, true, 7, 'https://image.hm.com/assets/hm/1f/ba/1fba76215c6836a080f6109245f1c9fbdc72c665.jpg?imwidth=1536'),
-(25, 'Ribbed Crop Top (Women)', 'A short, fitted top in soft ribbed jersey with short sleeves and a round neckline.', 9.99, true, 7, 'https://image.hm.com/assets/hm/3d/8b/3d8b8e75bb624b1db83753c87bd5913861d1b09d.jpg?imwidth=2160'),
-(26, 'Rib-knit Button-front Top (Women)', 'A rib-knit top with a collar, front buttons and long sleeves. Slim fit.', 17.99, true, 7, 'https://image.hm.com/assets/hm/85/91/859120450190f6c6aa4272606577121b4d1ad3e3.jpg?imwidth=2160'),
-(27, 'Ribbed Tank Top (Women)', 'Slim-fit tank top in soft ribbed jersey with narrow shoulder straps.', 6.99, true, 7, 'https://image.hm.com/assets/hm/54/53/54534e7ad865a884937e36582fb08473c913569e.jpg?imwidth=2160'),
+(25, 'Ribbed Crop Top ', 'A short, fitted top in soft ribbed jersey with short sleeves and a round neckline.', 9.99, true, 7, 'https://image.hm.com/assets/hm/3d/8b/3d8b8e75bb624b1db83753c87bd5913861d1b09d.jpg?imwidth=2160'),
+(26, 'Rib-knit Button-front Top ', 'A rib-knit top with a collar, front buttons and long sleeves. Slim fit.', 17.99, true, 7, 'https://image.hm.com/assets/hm/85/91/859120450190f6c6aa4272606577121b4d1ad3e3.jpg?imwidth=2160'),
+(27, 'Ribbed Tank Top ', 'Slim-fit tank top in soft ribbed jersey with narrow shoulder straps.', 6.99, true, 7, 'https://image.hm.com/assets/hm/54/53/54534e7ad865a884937e36582fb08473c913569e.jpg?imwidth=2160'),
 
 -- Women's outwear 
 (35, 'Belted Trench Coat', 'Classic double-breasted trench coat with waist belt and side pockets.', 69.99, true, 10, 'https://image.hm.com/assets/hm/4d/ce/4dce1219225d3fdc73234de477fbc2f88c963a11.jpg?imwidth=2160'),
@@ -95,19 +95,19 @@ INSERT INTO products (id, name, description, price, is_active, category_id, imag
 
 -- Boy's
 (13, 'Loose Fit Linen‑Blend Pants (Kids)', 'Kids loose-fit pants in a cotton–linen blend with elastic drawstring waist.', 14.99, true, 11, 'https://image.hm.com/assets/hm/d8/11/d8113821b8647ab6ab40348cf53c7fec690e1856.jpg?imwidth=2160'),
-(19, 'Cotton T-shirt (Boys)', 'Soft cotton t-shirt with classic fit.', 14.99, true, 11, 'https://image.hm.com/assets/hm/97/96/9796d97e63fa5f0095496d6f44be99c1bb1ad8b4.jpg?imwidth=1260'),
-(20, 'Cotton T-shirt (Boys)', 'Soft cotton t-shirt with classic fit.', 14.99, true, 11, 'https://image.hm.com/assets/hm/e5/d5/e5d5f85fdfaa3f6924bfbad94d7fcf7c2ce4b912.jpg?imwidth=2160'),
-(21, 'Denim Shorts (Boys)', 'Classic denim shorts with adjustable waistband.', 13.99, true, 11, 'https://image.hm.com/assets/hm/6f/3e/6f3ec265ce080304a40385468857f312bed27085.jpg?imwidth=2160'),
-(22, 'Hoodie with Graphic Print (Boys)', 'Cozy hoodie with cool graphic design.', 29.99, true, 11, 'https://image.hm.com/assets/hm/71/23/7123a04edc8eb9106d8a26861d771d86f4bb2c09.jpg?imwidth=2160'),
+(19, 'Cotton T-shirt', 'Soft cotton t-shirt with classic fit.', 14.99, true, 11, 'https://image.hm.com/assets/hm/97/96/9796d97e63fa5f0095496d6f44be99c1bb1ad8b4.jpg?imwidth=1260'),
+(20, 'Cotton T-shirt', 'Soft cotton t-shirt with classic fit.', 14.99, true, 11, 'https://image.hm.com/assets/hm/e5/d5/e5d5f85fdfaa3f6924bfbad94d7fcf7c2ce4b912.jpg?imwidth=2160'),
+(21, 'Denim Shorts', 'Classic denim shorts with adjustable waistband.', 13.99, true, 11, 'https://image.hm.com/assets/hm/6f/3e/6f3ec265ce080304a40385468857f312bed27085.jpg?imwidth=2160'),
+(22, 'Hoodie with Graphic Print', 'Cozy hoodie with cool graphic design.', 29.99, true, 11, 'https://image.hm.com/assets/hm/71/23/7123a04edc8eb9106d8a26861d771d86f4bb2c09.jpg?imwidth=2160'),
 
 
 
 -- Girl's 
-(14, 'Flared‑Skirt Printed Dress (Kids)', 'Sleeveless jersey dress with printed flared woven skirt—playful unicorn pattern.', 19.99, true, 12, 'https://image.hm.com/assets/hm/95/f8/95f86a4740444177ce5f4110b5c9e0742532451e.jpg?imwidth=1260'),
-(15, 'Scalloped‑Trim Organic Cotton Dress (Kids)', 'Organic‑cotton sleeveless dress with scalloped ruffled yoke and flared skirt.', 39.99, true, 12, 'https://image.hm.com/assets/hm/09/4d/094d9f330ccb1e0c71ccfabed71a9e57496af455.jpg?imwidth=2160'),
-(16, 'Ribbed Cotton Tank Top (Girls)', 'Soft ribbed cotton tank top — comfy for layering or warm days.', 7.99, true, 12, 'https://image.hm.com/assets/hm/be/6e/be6ea873aa1460f9c8e752047d5803d5b0234a96.jpg?imwidth=2160'),
-(17, 'Soft Jersey Shorts (Girls)', 'Casual shorts in stretch jersey with elastic waistband.', 9.99, true, 12, 'https://image.hm.com/assets/hm/be/57/be573247f5a33a6d5cc4dab5a1e46f2f43160c2a.jpg?imwidth=2160'),
-(18, 'Denim Skinny Jeans (Girls)', 'Stretch denim skinny jeans with adjustable waistband.', 24.99, true, 12, 'https://image.hm.com/assets/hm/6d/8d/6d8d17aba2cab820fdceda8cdf02a49cb55d85b7.jpg?imwidth=1260');
+(14, 'Flared‑Skirt Printed Dress', 'Sleeveless jersey dress with printed flared woven skirt—playful unicorn pattern.', 19.99, true, 12, 'https://image.hm.com/assets/hm/95/f8/95f86a4740444177ce5f4110b5c9e0742532451e.jpg?imwidth=1260'),
+(15, 'Scalloped‑Trim Organic Cotton Dress', 'Organic‑cotton sleeveless dress with scalloped ruffled yoke and flared skirt.', 39.99, true, 12, 'https://image.hm.com/assets/hm/09/4d/094d9f330ccb1e0c71ccfabed71a9e57496af455.jpg?imwidth=2160'),
+(16, 'Ribbed Cotton Tank Top', 'Soft ribbed cotton tank top — comfy for layering or warm days.', 7.99, true, 12, 'https://image.hm.com/assets/hm/be/6e/be6ea873aa1460f9c8e752047d5803d5b0234a96.jpg?imwidth=2160'),
+(17, 'Soft Jersey Shorts', 'Casual shorts in stretch jersey with elastic waistband.', 9.99, true, 12, 'https://image.hm.com/assets/hm/be/57/be573247f5a33a6d5cc4dab5a1e46f2f43160c2a.jpg?imwidth=2160'),
+(18, 'Denim Skinny Jeans', 'Stretch denim skinny jeans with adjustable waistband.', 24.99, true, 12, 'https://image.hm.com/assets/hm/6d/8d/6d8d17aba2cab820fdceda8cdf02a49cb55d85b7.jpg?imwidth=1260');
 
 
 

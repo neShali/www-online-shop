@@ -1,0 +1,30 @@
+.rating {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 4px;
+}
+
+.star {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: center;
+  font-size: 24px;
+  cursor: default;
+
+  &.empty {
+    color: #c0bfbf;
+  }
+  &.filled {
+    color: #000;
+  }
+}
+
+.star:enabled {
+  cursor: pointer;
+}
+.star:enabled:hover {
+  color: #333;
+}
