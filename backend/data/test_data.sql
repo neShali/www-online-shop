@@ -488,14 +488,56 @@ INSERT INTO reviews (product_id, user_id, rating, comment) VALUES
 
 -- Promos
 INSERT INTO promos (code, discount_percent, discount_amount, min_purchase_amount, is_active, start_date, end_date) VALUES
-                                                                                                                       ('WELCOME10', 10, NULL, 50, true, '2025-01-01', '2025-12-31'),
-                                                                                                                       ('SUMMER25', 25, NULL, 100, true, '2025-06-01', '2025-08-31'),
-                                                                                                                       ('FLASH50', 50, NULL, 200, false, '2025-04-01', '2025-04-05'),
-                                                                                                                       ('FREESHIP', NULL, 15, 75, true, '2025-01-01', '2025-12-31');
+                                                                                                                        ('SUMMER50', 50, NULL, 100, true, '2025-06-01', '2025-08-31'),        
+                                                                                                                        ('OUTERWEAR30', 30, NULL, 150, true, '2025-10-01', '2025-12-01'),    
+                                                                                                                        ('ONLINE70', 70, NULL, 80, true, '2025-01-01', '2025-12-31'),
+                                                                                                                         ('BASICS20', 20, NULL, 50, true, '2025-07-01', '2025-09-30'),         -('KIDSFEST15', 15, NULL, 40, true, '2025-08-01', '2025-09-15'),
+                                                                                                                         ('FALLSET25', 25, NULL, 120, true, '2025-09-01', '2025-10-31');
 
--- Product promos
+-- Промо 1: SUMMER50 
 INSERT INTO product_promos (product_id, promo_id) VALUES
--- SUMMER25 applies to selected summer clothing
-(3, 2),  -- Casual Polo Shirt
-(6, 2),  -- Athletic Shorts
-(10, 2); -- Maxi Sundress
+(9, 1),   
+(10, 1), 
+(28, 1),  
+(30, 1),  
+(33, 1);  
+
+-- Промо 2: OUTERWEAR30 
+INSERT INTO product_promos (product_id, promo_id) VALUES
+(35, 2),  
+(36, 2), 
+(37, 2),  
+(38, 2),  
+(40, 2);  
+
+-- Промо 3: ONLINE70 
+INSERT INTO product_promos (product_id, promo_id) VALUES
+(11, 3),  
+(24, 3), 
+(29, 3),  
+(32, 3),  
+(34, 3); 
+
+-- Промо 4: BASICS20 
+INSERT INTO product_promos (product_id, promo_id) VALUES
+(1, 4),  
+(4, 4),   
+(8, 4),   
+(19, 4),  
+(27, 4);  
+
+-- Промо 5: KIDSFEST15 
+INSERT INTO product_promos (product_id, promo_id) VALUES
+(17, 5),  
+(18, 5), 
+(20, 5),  
+(21, 5), 
+(22, 5);  
+
+-- Промо 6: FALLSET25
+INSERT INTO product_promos (product_id, promo_id) VALUES
+(6, 6),   
+(7, 6),    
+(8, 6),    
+(36, 6),   
+(41, 6);   
