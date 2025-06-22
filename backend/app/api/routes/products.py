@@ -22,17 +22,21 @@ def list_products(
     category_id: Optional[int] = Query(None, description="Filter by category ID"),
     min_price: Optional[float] = Query(None, ge=0, description="Minimum price"),
     max_price: Optional[float] = Query(None, ge=0, description="Maximum price"),
-    search: Optional[str] = Query(
-        None, description="Search term for name or description"
+    search: Optional[str] = Query(None, description="Search term"),
+    # ─────────── добавляем ───────────
+    variant_size: Optional[str] = Query(
+        None, description="Filter by variant size (e.g. S, M, L)"
+    ),
+    variant_color: Optional[str] = Query(
+        None, description="Filter by variant color (e.g. red, blue)"
     ),
 ) -> Any:
     """
-    Retrieve products with filtering and pagination.
+    Retrieve products with filtering (category, price, search, size, color)
+    and pagination.
     """
-    # Calculate skip value for pagination
     skip = (page - 1) * size
 
-    # Get products with filters
     products = product.get_multi(
         db,
         skip=skip,
@@ -41,26 +45,26 @@ def list_products(
         min_price=min_price,
         max_price=max_price,
         search=search,
+        size=variant_size,        # ← прокидываем
+        color=variant_color,      # ← прокидываем
     )
 
-    # Get total count for pagination
     total = product.get_count(
         db,
         category_id=category_id,
         min_price=min_price,
         max_price=max_price,
         search=search,
+        size=variant_size,        # ← тоже сюда
+        color=variant_color,
     )
-
-    # Calculate total pages
-    total_pages = math.ceil(total / size)
 
     return {
         "items": products,
         "total": total,
         "page": page,
         "size": size,
-        "pages": total_pages,
+        "pages": math.ceil(total / size),
     }
 
 

@@ -33,6 +33,12 @@ export type ListProductsQueryParams = {
    * @description Search term for name or description
    */
   search?: string | null;
+
+  /** Filter by variant size (e.g. "M") */
+  variant_size?: string | null;
+
+  /** Filter by variant color (e.g. "red") */
+  variant_color?: string | null;
 };
 
 /**

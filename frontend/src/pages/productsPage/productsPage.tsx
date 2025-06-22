@@ -13,7 +13,6 @@ import { Pagination } from '../../shared/components/pagination';
 export function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState<number | null>();
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [stock, setStock] = useState<'In stock' | 'Out of stock'>();
   const [activeColor, setActiveColor] = useState<string>('');
   const [activeSize, setActiveSize] = useState<string>('');
   const [activeMinPrice, setActiveMinPrice] = useState<number>();
@@ -28,6 +27,8 @@ export function ProductsPage() {
     search: searchQuery,
     min_price: activeMinPrice,
     max_price: activeMaxPrice,
+    variant_color: activeColor,
+    variant_size: activeSize,
   });
 
   const {
@@ -49,7 +50,7 @@ export function ProductsPage() {
     if (isError && error) {
       setErrorText(error.message);
     }
-  }, []);
+  }, [error, isError]);
 
   const handleCategoryChange = (categoryId: number | null) => {
     setActiveCategory(categoryId);
@@ -67,19 +68,25 @@ export function ProductsPage() {
           sizes={sizes}
           onSizeClick={setActiveSize}
         />
-        <Accordion title="Availability">
-          <Checkbox
-            id={'In stock'}
-            label={'In stock'}
-            checked={stock === 'In stock'}
-            onChange={() => setStock('In stock')}
-          />
-          <Checkbox
-            id={'Out of stock'}
-            label={'Out of stock'}
-            checked={stock === 'Out of stock'}
-            onChange={() => setStock('Out of stock')}
-          />
+
+        <Accordion title="Price Range">
+          <div>
+            <input
+              type="number"
+              placeholder={priceRange.min}
+              className={styles.smallInput}
+              value={activeMinPrice}
+              onChange={(e) => setActiveMinPrice(+e.target.value)}
+            />
+            –
+            <input
+              type="number"
+              placeholder={priceRange.max}
+              className={styles.smallInput}
+              value={activeMaxPrice}
+              onChange={(e) => setActiveMaxPrice(+e.target.value)}
+            />
+          </div>
         </Accordion>
         <Accordion title="Category">
           {categories?.map(
@@ -106,26 +113,6 @@ export function ProductsPage() {
               onChange={() => setActiveColor(color)}
             />
           ))}
-        </Accordion>
-
-        <Accordion title="Price Range">
-          <div>
-            <input
-              type="number"
-              placeholder={priceRange.min}
-              className={styles.smallInput}
-              value={activeMinPrice}
-              onChange={(e) => setActiveMinPrice(+e.target.value)}
-            />{' '}
-            –
-            <input
-              type="number"
-              placeholder={priceRange.max}
-              className={styles.smallInput}
-              value={activeMaxPrice}
-              onChange={(e) => setActiveMaxPrice(+e.target.value)}
-            />
-          </div>
         </Accordion>
       </aside>
 
@@ -155,7 +142,9 @@ export function ProductsPage() {
           <div className={styles.message}>{errorText}</div>
         )}
         {emptyProducts && (
-          <div className={styles.message}>Try another category</div>
+          <div className={styles.message}>
+            No products, try changing filters
+          </div>
         )}
         {!isLoading && !isError && !emptyProducts && (
           <>

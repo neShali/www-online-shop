@@ -3,32 +3,26 @@ import styles from './footer.module.scss';
 
 export const Footer: React.FC = () => (
   <footer className={styles.footer}>
-    <div className={`${styles.container} container`}>
+    <div className={styles.container}>
       <div className={styles.left}>
         <p className={styles.title}>Info</p>
-        <ul className={styles.list}>
-          <li>
-            <a href="#" className={styles.link}>
-              Pricing
-            </a>
-          </li>
-          <li>
-            <a href="#" className={styles.link}>
-              About
-            </a>
-          </li>
-          <li>
-            <a href="#" className={styles.link}>
-              Contacts
-            </a>
-          </li>
+        <ul className={styles.langList}>
+          {['Pricing', 'About', 'Contacts'].map((item) => (
+            <li key={item}>
+              <button onClick={() => {}} className={styles.langBtn}>
+                {item}
+              </button>
+            </li>
+          ))}
         </ul>
 
         <p className={styles.title}>Languages</p>
         <ul className={styles.langList}>
           {['Eng', 'Esp', 'Sve'].map((lng) => (
             <li key={lng}>
-              <button className={styles.langBtn}>{lng}</button>
+              <button onClick={() => {}} className={styles.langBtn}>
+                {lng}
+              </button>
             </li>
           ))}
         </ul>
@@ -39,7 +33,7 @@ export const Footer: React.FC = () => (
         <div className={styles.tech}>
           <a href="#" className={styles.techLogo}>
             <svg width="47" height="47">
-              <use href="./icons/main/symbol-defs.svg#icon-logo" />
+              <use href="symbol-defs.svg#icon-logo" />
             </svg>
           </a>
           <p className={styles.techName}>VR</p>
