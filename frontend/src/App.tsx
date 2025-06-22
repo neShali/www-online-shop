@@ -8,6 +8,8 @@ import { CartPage } from './pages/cartPage';
 import { AuthPage } from './pages/authPage';
 import './styles/fonts.css';
 import { useScrollToTop } from './shared/hooks/useScrollToTop';
+import { NotFoundPage } from './pages/notFoundPage';
+import { CheckoutPage } from './pages/checkoutPage';
 
 function App() {
   useScrollToTop();
@@ -26,7 +28,9 @@ function App() {
         <Route path="login" element={<AuthPage />} />
         <Route path="register" element={<AuthPage />} />
 
-        <Route path="*" element={<div>404 Страница не найдена</div>} />
+        <Route path="checkout" element={<CheckoutPage />} />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

@@ -1,9 +1,14 @@
 import { Link } from 'react-router';
 import styles from './header.module.scss';
 import { cartHooks } from '../../../api';
+import { useAuth } from '../../../../providers/authProvider';
 
 export default function Header() {
-  const { data } = cartHooks.useGetMyCart();
+  const { isLoggedIn } = useAuth();
+
+  const { data } = cartHooks.useGetMyCart({
+    query: { enabled: !!isLoggedIn },
+  });
 
   const cartCount =
     data?.items?.reduce((acc, item) => acc + (item.quantity ?? 1), 0) || 0;

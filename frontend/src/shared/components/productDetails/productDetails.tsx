@@ -8,9 +8,14 @@ import { CardButton } from '../buttons';
 interface ProductDetailsProps {
   product?: Product;
   onAdd?: (variant_id: number) => void;
+  isLoggedIn?: boolean;
 }
 
-export const ProductDetails: FC<ProductDetailsProps> = ({ product, onAdd }) => {
+export const ProductDetails: FC<ProductDetailsProps> = ({
+  product,
+  onAdd,
+  isLoggedIn,
+}) => {
   const { variants = [], name, price, description } = product || {};
 
   const [activeColor, setActiveColor] = useState<string | null>(null);
@@ -125,14 +130,14 @@ export const ProductDetails: FC<ProductDetailsProps> = ({ product, onAdd }) => {
       </div>
 
       <CardButton
-        text="ADD"
+        text={isLoggedIn ? 'ADD' : 'Log in to add'}
         size="small"
         onClick={() => {
           if (selectedVariant && onAdd) {
             onAdd(selectedVariant.id);
           }
         }}
-        disabled={!selectedVariant}
+        disabled={!selectedVariant || !isLoggedIn}
       />
     </div>
   );

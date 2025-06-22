@@ -58,6 +58,10 @@ raw.interceptors.response.use(
   async (error) => {
     const { response, config } = error as { response: any; config: any };
 
+    if (!getToken()) {
+      return Promise.reject(error);
+    }
+
     if (
       config.url?.includes('/api/v1/auth/login') ||
       config.url?.includes('/api/v1/auth/register') ||

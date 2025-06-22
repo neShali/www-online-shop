@@ -6,10 +6,13 @@ import { ReviewForm } from '../../shared/components/reviewForm';
 import { ReviewItem } from '../../shared/components/reviewItem';
 import styles from './productPage.module.scss';
 import { useParams } from 'react-router';
+import { useAuth } from '../../providers/authProvider';
 
 export function ProductPage() {
   const { productId } = useParams();
   const [reviewError, setReviewError] = useState('');
+
+  const { isLoggedIn } = useAuth();
 
   const { mutate: addItemToCart } = cartHooks.useAddItemToCart({
     mutation: {
@@ -88,7 +91,11 @@ export function ProductPage() {
               className={styles.mainImg}
             />
           )}
-          <ProductDetails product={product} onAdd={handleAddToCart} />
+          <ProductDetails
+            isLoggedIn={isLoggedIn}
+            product={product}
+            onAdd={handleAddToCart}
+          />
         </div>
       </section>
 

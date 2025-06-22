@@ -4,10 +4,11 @@ import { Input } from '../../../shared/components/input';
 import { authHooks } from '../../../shared/api';
 
 import styles from './form.module.scss';
-import { saveToken } from '../../../shared/api/auth';
+import { useAuth } from '../../../providers/authProvider';
 
 export const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{
@@ -16,12 +17,12 @@ export const LoginForm: React.FC = () => {
     api?: string;
   }>({});
 
-  const { mutate: login, isPending } = authHooks.useLogin({
+  const { mutate: doLogin, isPending } = authHooks.useLogin({
     mutation: {
       onSuccess: (response) => {
         const token = response.access_token;
         if (token) {
-          saveToken(token);
+          login(token);
         }
         navigate('/');
       },
@@ -48,7 +49,7 @@ export const LoginForm: React.FC = () => {
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
 
-    login({ data: { username, password } });
+    doLogin({ data: { username, password } });
   };
 
   return (
