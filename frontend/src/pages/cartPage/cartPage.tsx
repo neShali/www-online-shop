@@ -5,12 +5,12 @@ import { cartHooks } from '../../shared/api';
 import styles from './CartPage.module.scss';
 import { CartItem } from './components/cartItem';
 import { Checkbox } from '../../shared/components/checkbox';
-import { useIsLoggedIn } from '../../shared/hooks/useIsLoggedIn';
 import { CardButton } from '../../shared/components/buttons';
+import { useAuth } from '../../providers/authProvider';
 
 export const CartPage: React.FC = () => {
   const navigate = useNavigate();
-  const isLoggedIn = useIsLoggedIn();
+  const { isLoggedIn } = useAuth();
 
   const [isAgreed, setIsAgreed] = useState<boolean>(false);
   const {
