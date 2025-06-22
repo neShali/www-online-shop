@@ -1,0 +1,22 @@
+.seasonal {
+  padding: 40px 0;
+  h2 {
+    font-size: 36px;
+    text-transform: uppercase;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    align-items: start;
+    justify-items: center;
+    grid-auto-rows: auto;
+    margin: 40px 0 40px;
+  }
+  .more {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 10px;
+  }
+}

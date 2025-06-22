@@ -171,7 +171,6 @@ def get_promo_products(
     *,
     db: Session = Depends(get_db),
     promo_id: int,
-    current_user: User = Depends(get_current_active_superuser),
 ) -> Any:
     """
     Get all products associated with a promo (admin only).
