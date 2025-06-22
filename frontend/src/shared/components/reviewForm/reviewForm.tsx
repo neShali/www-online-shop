@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './ReviewForm.module.scss';
+import styles from './reviewForm.module.scss';
 import { Rating } from '../rating';
 import { Input } from '../input';
 import { CardButton } from '../buttons';

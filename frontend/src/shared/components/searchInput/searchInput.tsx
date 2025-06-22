@@ -1,22 +1,15 @@
 import React, { type ChangeEventHandler, type FC } from 'react';
-import styles from './SearchInput.module.scss';
+import styles from './searchInput.module.scss';
 import { Icon } from '../icon';
 
 export interface SearchInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
-  /** Текущее значение */
   value: string;
-  /** Обработчик изменения */
   onChange: ChangeEventHandler<HTMLInputElement>;
-  /** Плейсхолдер */
   placeholder?: string;
-  /** Дополнительный CSS-класс для контейнера */
   className?: string;
 }
 
-/**
- * Поле поиска с иконкой.
- */
 export const SearchInput: FC<SearchInputProps> = ({
   value,
   onChange,

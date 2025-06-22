@@ -41,7 +41,7 @@ export function ProductsPage() {
 
   const categories = useMemo(() => {
     if (!rawCategories) return [];
-    return [{ id: null, name: 'All' }, ...rawCategories];
+    return [{ id: null, name: 'All' }, ...rawCategories.slice(3, 12)];
   }, [rawCategories]);
 
   const { colors, sizes, priceRange } = useGetAllVariants();

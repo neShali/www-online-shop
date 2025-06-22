@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { queryClient } from '../../queryClient';
 import { cartHooks } from '../../shared/api';
-import styles from './CartPage.module.scss';
+import styles from './cartPage.module.scss';
 import { CartItem } from './components/cartItem';
 import { Checkbox } from '../../shared/components/checkbox';
 import { CardButton } from '../../shared/components/buttons';

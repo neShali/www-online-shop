@@ -6,7 +6,6 @@ import { ProductsPage } from './pages/productsPage';
 import { ProductPage } from './pages/productPage';
 import { CartPage } from './pages/cartPage';
 import { AuthPage } from './pages/authPage';
-import './styles/fonts.css';
 import { useScrollToTop } from './shared/hooks/useScrollToTop';
 import { NotFoundPage } from './pages/notFoundPage';
 import { CheckoutPage } from './pages/checkoutPage';
