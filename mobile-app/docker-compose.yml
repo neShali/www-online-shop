@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Мобильное приложение
+  mobile-app:
+    build: .
+    ports:
+      - "5173:80"
+    container_name: mobile-shop-app
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - shop-network
+
+  # Бэкенд API (опционально, если хотите запустить все вместе)
+  backend:
+    build: ../backend
+    ports:
+      - "8000:8000"
+    container_name: shop-backend
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_SERVER=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=shop_db
+    networks:
+      - shop-network
+
+  # База данных PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: shop-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: shop_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../backend/data:/data
+    networks:
+      - shop-network
+
+volumes:
+  postgres_data:
+
+networks:
+  shop-network:
+    driver: bridge

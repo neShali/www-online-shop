@@ -1,0 +1,57 @@
+# Зависимости
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Сборка
+dist
+
+# IDE и редакторы
+*.swp
+*.swo
+
+# OS файлы
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Логи
+logs
+
+# Временные файлы
+.tmp
+.temp
+
+# Capacitor
+.capacitor
+
+# Тесты
+coverage
+.nyc_output
+
+# Переменные окружения
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Documentation
+*.md
+
+# Cypress
+cypress/videos
+cypress/screenshots

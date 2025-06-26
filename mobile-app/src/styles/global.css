@@ -1,0 +1,155 @@
+.section-padding {
+  padding: 16px;
+}
+
+.search-container {
+  padding: 8px 16px;
+  background: var(--ion-color-light);
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ion-color-medium);
+}
+
+.empty-cart h2 {
+  margin-bottom: 16px;
+}
+
+.price {
+  font-weight: bold;
+  color: var(--ion-color-primary);
+  font-size: 1.2em;
+}
+
+.description {
+  color: var(--ion-color-medium);
+  font-size: 0.9em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.quantity {
+  font-weight: bold;
+  min-width: 30px;
+  text-align: center;
+}
+
+.cart-total {
+  padding: 16px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--ion-color-medium);
+}
+
+/* Product card improvements */
+ion-card {
+  margin: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+ion-card:hover {
+  transform: translateY(-2px);
+}
+
+ion-card ion-img {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Tab bar styling */
+ion-tab-bar {
+  border-top: 1px solid var(--ion-color-light-shade);
+}
+
+/* Responsive images */
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Loading states */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* Category badges */
+.category-badge {
+  background: var(--ion-color-light);
+  color: var(--ion-color-dark);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+/* Rating stars */
+.rating-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 8px 0;
+}
+
+/* Promo card styling */
+ion-card[color="primary"] {
+  --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary-shade));
+}
+
+/* Search and filter improvements */
+.search-container ion-searchbar {
+  --background: white;
+  --border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.search-container ion-item {
+  --background: white;
+  --border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+/* Product grid improvements */
+.product-grid ion-col {
+  padding: 4px;
+}
+
+.product-grid ion-card {
+  margin: 0;
+  height: 100%;
+}
+
+/* Responsive text */
+@media (max-width: 480px) {
+  .section-padding {
+    padding: 12px;
+  }
+  
+  ion-card-title {
+    font-size: 1rem !important;
+  }
+  
+  .price {
+    font-size: 1.1em !important;
+  }
+}
