@@ -1,4 +1,4 @@
-BACKEND_CORS_ORIGINS=["http://localhost:5173", "http://localhost:8080"]
+BACKEND_CORS_ORIGINS=["http://localhost:5173", "http://localhost:8080, "http://10.1.10.61:5173"]
 POSTGRES_SERVER="db"
 POSTGRES_PORT=5432
 POSTGRES_USER="postgres"
