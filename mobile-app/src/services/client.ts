@@ -55,14 +55,14 @@ const defaultTransforms = axios.defaults
   .transformRequest as AxiosRequestTransformer[];
 
 const raw = axios.create({
-  baseURL: 'http://localhost:8000/api/v1',
+  baseURL: 'http://10.1.10.61:8000/api/v1',
   transformRequest: [
     (data, headers) => {
       const ct =
         (headers as Record<string, string>)['Content-Type'] ||
         (headers as Record<string, string>)['content-type'];
 
-      if (ct && (ct as string).includes('application/x-www-form-urlencoded')) {
+      if (ct && (ct as string).includes('application/x-www-form-urlencoded' )) {
         return new URLSearchParams(data).toString();
       }
 
