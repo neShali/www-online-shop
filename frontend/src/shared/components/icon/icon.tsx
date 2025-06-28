@@ -23,7 +23,7 @@ type IconProps = {
 
 export const Icon = ({ name, className }: IconProps) => {
   return (
-    <svg className={`${styles.icon} ${className}`} width="7">
+    <svg role="img" className={`${styles.icon} ${className}`} width="7">
       <use href={`symbol-defs.svg#icon-${name}`}></use>
     </svg>
   );
